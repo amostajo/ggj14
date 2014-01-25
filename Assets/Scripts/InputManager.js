@@ -183,6 +183,15 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
+   * Event de acción de botón de atrás
+   *
+   * @param boolean isDown Evento de si fue presionado o liberado.
+   */
+  public function OnPressBack (isDown : boolean) {
+    back = isDown;
+  }
+
+  /**
    * Event de acción de botón de saltar
    *
    * @param boolean isDown Evento de si fue presionado o liberado.

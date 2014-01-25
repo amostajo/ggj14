@@ -3,6 +3,9 @@ import System.Collections.Generic;
 
 enum Scheme {Desktop = 1, Mobile = 2};
 
+/**
+ * Manejador del juego, contiene todas las reglas de juego.
+ */
 class Manager extends MonoBehaviour {
 
   /**
@@ -31,6 +34,16 @@ class Manager extends MonoBehaviour {
   static var TagJump = 'Jump';
 
   /**
+   * Tag para identificar relación de atras.
+   */
+  static var TagBack = 'Back';
+
+  /**
+   * Tag para identificar relación de salir.
+   */
+  static var TagQuit = 'Quit';
+
+  /**
     * Identifica al jugador
     */
   @HideInInspector
@@ -42,14 +55,14 @@ class Manager extends MonoBehaviour {
   public var stop : boolean;    
 
   /**
-    * Tiempo para empezar segundo salto
-    */  
-  public var jumpTime : float = 0.0f; 
-
-  /**
    * Velocidad de los obstaculos.
    */
   public var speed : float;
+
+  /**
+   * Intervalo de tiempo para segundo salto.
+   */
+  public var doubleJumpInterval : float = 0.3f;
 
   /**
    * Obstaculos inactivos POOL.
@@ -89,9 +102,20 @@ class Manager extends MonoBehaviour {
   public var inputs : InputManager;
 
   /**
+   * Referencia al timer.
+   */
+  @HideInInspector
+  public var timer : Timer;
+
+  /**
    * Auxiliar, indice.
    */
   private var index : int;
+
+  /**
+    * Tiempo para empezar segundo salto
+    */  
+  private var jumpTime : float = 0.0f; 
 
   /**
    * Auxiliar, obstaculo.
@@ -116,6 +140,7 @@ class Manager extends MonoBehaviour {
   public function Awake () {
     // Propiedades
     inputs = FindObjectOfType(InputManager);
+    timer = FindObjectOfType(Timer);
     player = FindObjectOfType(Player);
     obstacleBegin = GameObject.Find("ObstacleBegin").transform.position;
     // Obtención del schema.
@@ -129,29 +154,28 @@ class Manager extends MonoBehaviour {
   /**
    * Salto al jugador.
    */
-  public function Update(){
-    if(inputs.jump)     {
-      if(player.numJump == 0)
-      {
-        player.Jump();
-        jumpTime = 0.0f;
-      }
-      else
-      {
-        if(jumpTime>0.3 && player.numJump==1)
-        {
+  public function Update () {
+    if (inputs.back) {
+      HandlePause();
+    }
+    if (!timer.paused) {
+      if(inputs.jump) {
+        if(player.numJump == 0) {
+          player.Jump();
+          jumpTime = 0.0f;
+        } else if (jumpTime > doubleJumpInterval && player.numJump == 1) {
           player.Jump();
         }
       }
+      jumpTime += Time.deltaTime;
     }
-    jumpTime += Time.deltaTime;
   }
 
   /**
    * Mueve los obstaculos del mundo.
    */
   public function FixedUpdate () {
-    if(!stop) {
+    if(!stop && !timer.paused) {
       SpawnObstacle();    
       for (index = show.Count-1;index>=0; --index) {
         if(show[index].gameObject.activeSelf)
@@ -163,7 +187,7 @@ class Manager extends MonoBehaviour {
   /**
    * Para el juego.
    */
-  public function Stop ()   {
+  public function Stop () {
     stop = true;
   }
   
@@ -172,6 +196,19 @@ class Manager extends MonoBehaviour {
    */
   public function GameOver () {
     // TODO
+  }
+
+  /**
+   * Para o resume el juego.
+   */
+  public function HandlePause () {
+    if (timer.paused) {
+      timer.Resume();
+      player.OnResume();
+    } else {
+      timer.Pause();
+      player.OnPause();
+    }
   }
 
 

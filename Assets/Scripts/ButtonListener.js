@@ -35,6 +35,9 @@ class ButtonListener extends MonoBehaviour {
       case Manager.TagJump:
         manager.inputs.OnPressJump(isDown);
         break;
+      case Manager.TagBack:
+        manager.inputs.OnPressBack(isDown);
+        break;
       default:
         break;
     }
