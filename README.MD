@@ -5,6 +5,9 @@ Game developed for the GGJ2014.
 ##UNITY3D Version
 * 4.3.x
 
+##Plugins
+* NGUI
+
 ##Contributors
 * Alejandro Mostajo
 * Diego Paut
