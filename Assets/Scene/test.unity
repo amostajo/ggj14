@@ -1592,7 +1592,7 @@ MonoBehaviour:
     target: {fileID: 0}
     relative: 1
     absolute: 0
-  mColor: {r: 1, g: 1, b: 1, a: .337254912}
+  mColor: {r: 1, g: 1, b: 1, a: .745098054}
   mPivot: 4
   mWidth: 100
   mHeight: 100
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   mAtlas: {fileID: 11400000, guid: 7b5e3bc5eb174374cabaa66a0b2928fa, type: 2}
-  mSpriteName: button
+  mSpriteName: button_bg
   mFillCenter: 1
   mType: 1
   mFillDirection: 4
@@ -1706,7 +1706,7 @@ MonoBehaviour:
     target: {fileID: 0}
     relative: 1
     absolute: 0
-  mColor: {r: 1, g: 1, b: 1, a: .337254912}
+  mColor: {r: 1, g: 1, b: 1, a: .745098054}
   mPivot: 4
   mWidth: 100
   mHeight: 100
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   mAtlas: {fileID: 11400000, guid: 7b5e3bc5eb174374cabaa66a0b2928fa, type: 2}
-  mSpriteName: button
+  mSpriteName: button_bg
   mFillCenter: 1
   mType: 1
   mFillDirection: 4
@@ -1874,7 +1874,7 @@ MonoBehaviour:
     target: {fileID: 0}
     relative: 1
     absolute: 0
-  mColor: {r: 1, g: 1, b: 1, a: .337254912}
+  mColor: {r: 1, g: 1, b: 1, a: .745098054}
   mPivot: 4
   mWidth: 100
   mHeight: 100
@@ -1882,7 +1882,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   mAtlas: {fileID: 11400000, guid: 7b5e3bc5eb174374cabaa66a0b2928fa, type: 2}
-  mSpriteName: button
+  mSpriteName: button_bg
   mFillCenter: 1
   mType: 1
   mFillDirection: 4

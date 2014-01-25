@@ -42,7 +42,7 @@ MonoBehaviour:
   mSprites:
   - name: button
     x: 0
-    y: 312
+    y: 608
     width: 200
     height: 200
     borderLeft: 0
@@ -54,8 +54,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: button_bg
-    x: 87
-    y: 137
+    x: 758
+    y: 924
     width: 100
     height: 100
     borderLeft: 0
@@ -67,36 +67,49 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: pause
-    x: 446
-    y: 442
-    width: 56
-    height: 70
+    x: 859
+    y: 928
+    width: 93
+    height: 96
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 4
+    paddingTop: 2
+    paddingBottom: 2
+  - name: power_air
+    x: 903
+    y: 827
+    width: 74
+    height: 75
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0
-    paddingRight: 0
+    paddingRight: 1
     paddingTop: 0
     paddingBottom: 0
-  - name: power_air
-    x: 337
-    y: 352
-    width: 108
-    height: 160
+  - name: power_air-off
+    x: 953
+    y: 949
+    width: 70
+    height: 75
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
+    paddingLeft: 2
+    paddingRight: 3
     paddingTop: 0
     paddingBottom: 0
   - name: power_fire
-    x: 201
-    y: 351
-    width: 135
-    height: 161
+    x: 751
+    y: 827
+    width: 75
+    height: 75
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -105,11 +118,24 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: power_water
+  - name: power_fire-off
     x: 0
-    y: 77
-    width: 86
-    height: 160
+    y: 535
+    width: 73
+    height: 72
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 2
+    paddingTop: 0
+    paddingBottom: 3
+  - name: power_water
+    x: 827
+    y: 828
+    width: 75
+    height: 74
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -117,25 +143,38 @@ MonoBehaviour:
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
-    paddingBottom: 0
+    paddingBottom: 1
+  - name: power_water-off
+    x: 74
+    y: 540
+    width: 75
+    height: 67
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 3
+    paddingBottom: 5
   - name: time_active
     x: 0
-    y: 238
-    width: 476
-    height: 32
+    y: 809
+    width: 750
+    height: 93
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 4
-    paddingRight: 4
-    paddingTop: 4
-    paddingBottom: 4
+    paddingLeft: 0
+    paddingRight: 7
+    paddingTop: 15
+    paddingBottom: 13
   - name: time_inactive
     x: 0
-    y: 271
-    width: 483
-    height: 40
+    y: 903
+    width: 757
+    height: 121
     borderLeft: 0
     borderRight: 0
     borderTop: 0
