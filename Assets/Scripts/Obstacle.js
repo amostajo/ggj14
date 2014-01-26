@@ -6,6 +6,11 @@
 class Obstacle extends MonoBehaviour {
 
   /**
+   * Indica si el obstacle es cola.
+   */
+  public var isTail : boolean = false;;
+
+  /**
    * Bounds
    */
   @HideInInspector

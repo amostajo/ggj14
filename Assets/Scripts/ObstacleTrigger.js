@@ -52,14 +52,14 @@ class ObstacleTrigger extends MonoBehaviour {
       manager.boss.Attack(power);
       particle = manager.GetParticle(power);
       particle.transform.parent =particlePosition;
-      particle.active = true;
+      particle.gameObject.SetActive(true);
     }
   }
   
   public function OnDisable(){
   	if(particle)
   	{
-  		particle.active = false;
+  		particle.gameObject.SetActive(false);
   		manager.ReturnParticle(particle);
   	}
   }

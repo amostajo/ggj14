@@ -189,12 +189,13 @@ class Manager extends MonoBehaviour {
     SetSchema();
     // Pool de obstaculos
     obstacles = List.<Obstacle>();
-    show = List.<Obstacle>();
+    if (show == null) {
+      show = List.<Obstacle>();
+    }
     particles = List.<GameObject>();
     FillPool(poolQuantity);
     // --
     Clear();
-    player.gameObject.SetActive(false);
     FillParticles(FireParticles,WaterParticles,WindParticles);
   }
 
@@ -407,12 +408,7 @@ class Manager extends MonoBehaviour {
       obstacle.gameObject.SetActive(false);
       obstacle.transform.parent = transform;
       obstacles.Add(obstacle);
-
     }
-
-    obstacle.gameObject.SetActive(true);
-    show.Add(obstacle);
-    obstacles.Remove(obstacle);
   }
 
   /**
