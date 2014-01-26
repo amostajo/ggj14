@@ -212,9 +212,12 @@ class Manager extends MonoBehaviour {
   public function FixedUpdate () {
     if(!stop && !timer.paused) {
       SpawnObstacle();    
-      for (index = show.Count-1;index>=0; --index) {
-        if(show[index].gameObject.activeSelf)
-          show[index].transform.Translate(-Time.deltaTime*speed,0,0);
+      if (show.Count > 0) {
+        for (index = show.Count-1;index>=0; --index) {
+          if(show[index].gameObject.activeSelf) {
+            show[index].transform.Translate(-Time.deltaTime*speed,0,0);
+          }
+        }
       }
     }
   }
@@ -268,7 +271,7 @@ class Manager extends MonoBehaviour {
    */
   public function SendToPool (swimmer : Obstacle) {
     swimmer.gameObject.SetActive(false);
-    swimmer.transform.localPosition.x = obstacleBegin.x + swimmer.gameObject.renderer.bounds.size.x;
+    swimmer.transform.localPosition.x = obstacleBegin.x + swimmer.GetSizeX();
     show.Remove(swimmer);
     obstacles.Add(swimmer);
   }
@@ -281,11 +284,10 @@ class Manager extends MonoBehaviour {
       obstacleWait = GetObstacle();
       obstacles.Remove(obstacleWait);
     }
-    if (obstacleBegin.x -show[show.Count - 1].gameObject.renderer.bounds.max.x 
-        >= obstacleWait.gameObject.renderer.bounds.size.x
+    if (show.Count > 0 && obstacleBegin.x - show[show.Count - 1].GetMaxX() 
+        >= obstacleWait.GetSizeX()
     ) {
-      obstacleWait.transform.localPosition.x = 
-        obstacleWait.gameObject.renderer.bounds.extents.x + show[show.Count - 1].gameObject.renderer.bounds.max.x;
+      obstacleWait.SetShowPosition(show[show.Count - 1].GetMaxX());
       obstacleWait.gameObject.SetActive(true);
       show.Add(obstacleWait);
       obstacleWait = null;
@@ -323,7 +325,7 @@ class Manager extends MonoBehaviour {
 
       obstacle = Instantiate (
           prefabs[Random.Range(0, prefabs.Length)],
-          Vector3.zero,
+          obstacleBegin,
           Quaternion.identity
       ).GetComponent(Obstacle);
       obstacle.gameObject.SetActive(false);
@@ -331,6 +333,8 @@ class Manager extends MonoBehaviour {
       obstacles.Add(obstacle);
 
     }
+
+    obstacle.gameObject.SetActive(true);
     show.Add(obstacle);
     obstacles.Remove(obstacle);
   }
