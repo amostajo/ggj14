@@ -9,7 +9,8 @@ TagManager:
   - Air
   - Jump
   - Back
-  - Player
+  - PlayerGirl
+  - Boss
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

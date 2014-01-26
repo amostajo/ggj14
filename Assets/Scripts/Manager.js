@@ -46,13 +46,24 @@ class Manager extends MonoBehaviour {
   /**
    * Tag para identificar relación con player.
    */
-  static var TagPlayer = 'Player';
+  static var TagPlayer = 'PlayerGirl';
+
+  /**
+   * Tag para identificar relación con boss.
+   */
+  static var TagBoss = 'Boss';
 
   /**
     * Identifica al jugador
     */
   @HideInInspector
   public var player : Player; 
+
+  /**
+    * Identifica al boss, grey gril
+    */
+  @HideInInspector
+  public var boss : Boss; 
 
   /**
     * Detiene el escenario
@@ -150,6 +161,7 @@ class Manager extends MonoBehaviour {
     inputs = FindObjectOfType(InputManager);
     timer = FindObjectOfType(Timer);
     player = FindObjectOfType(Player);
+    boss = FindObjectOfType(Boss);
     obstacleBegin = GameObject.Find("ObstacleBegin").transform.position;
     // Obtención del schema.
     SetSchema();
