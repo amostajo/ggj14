@@ -537,7 +537,7 @@ GameObject:
   - 114: {fileID: 550711737}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: PlayerGirl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 550711731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 547175100}
@@ -1280,11 +1280,11 @@ MonoBehaviour:
   player: {fileID: 0}
   boss: {fileID: 0}
   stop: 0
-  speed: 1
-  doubleJumpInterval: .300000012
+  speed: 4
+  doubleJumpInterval: .219999999
   obstacles: []
   show: []
-  poolQuantity: 30
+  poolQuantity: 60
   score: 0
   level: 0
   scheme: 1
@@ -1394,7 +1394,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939855256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 442099263}
@@ -1444,7 +1444,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 961415561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 442099263}
@@ -1497,7 +1497,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25, y: 3, z: 4}
+  m_Size: {x: 35, y: 3, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1024369211
 GameObject:
