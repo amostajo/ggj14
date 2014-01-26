@@ -83,10 +83,6 @@ class Player extends Actor {
   public function OnCollisionEnter(collision : Collision) {
     if(collision.gameObject.tag == "Obstacle"){
       numJump = 0;
-    }
-    if(collision.gameObject.tag=="PlayerKiller"){
-      var pk : PlayerKiller = new PlayerKiller();
-      pk.kill();
-    }  
+    } 
   }
 }
