@@ -38,7 +38,7 @@ class ObstacleTrigger extends MonoBehaviour {
     } else if (collider.transform.tag == manager.TagPlayer) {
       manager.AddScore(score);
     } else if (collider.transform.tag == manager.TagBoss) {
-      manager.boss.Attack(power, transform);
+      manager.boss.Attack(power);
     }
   }
 }
