@@ -12,8 +12,8 @@ GameObject:
   - 12: {fileID: 1200000}
   - 26: {fileID: 2600000}
   m_Layer: 0
-  m_Name: Hielo1
-  m_TagString: Untagged
+  m_Name: Hielo1 1
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,6 +5,9 @@
  */
 class ObstacleTrigger extends MonoBehaviour {
 
+  private var particle : GameObject;
+  
+  public var particlePosition : Transform;
   /**
    * Score granted by trigger.
    */
@@ -23,6 +26,14 @@ class ObstacleTrigger extends MonoBehaviour {
    */
   public function Awake () {
     manager = Manager.M();
+    var allChildren = gameObject.GetComponentsInChildren(Transform);
+    for (var child : Transform in allChildren) {
+    	if(child.name == "Particles")
+    	{
+    		particlePosition = child.transform;
+    	}
+    }
+    
   }
 
   /**
@@ -39,6 +50,17 @@ class ObstacleTrigger extends MonoBehaviour {
       manager.AddScore(score);
     } else if (collider.transform.tag == manager.TagBoss) {
       manager.boss.Attack(power);
+      particle = manager.GetParticle(power);
+      particle.transform.parent =particlePosition;
+      particle.active = true;
     }
+  }
+  
+  public function OnDisable(){
+  	if(particle)
+  	{
+  		particle.active = false;
+  		manager.ReturnParticle(particle);
+  	}
   }
 }

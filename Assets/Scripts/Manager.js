@@ -53,6 +53,8 @@ class Manager extends MonoBehaviour {
    */
   static var TagBoss = 'Boss';
 
+  public var particles : List.<GameObject>;
+
   /**
     * Identifica al jugador
     */
@@ -107,6 +109,12 @@ class Manager extends MonoBehaviour {
    * Esquema con el cual se van a obtener los inputs.
    */
   public var scheme : Scheme;
+
+  public var FireParticles : int =3;
+  
+  public var WaterParticles : int =2;
+  
+  public var WindParticles : int =2;
 
   /**
    * Punto de arranque para obstaculos.
@@ -182,10 +190,12 @@ class Manager extends MonoBehaviour {
     // Pool de obstaculos
     obstacles = List.<Obstacle>();
     show = List.<Obstacle>();
+    particles = List.<GameObject>();
     FillPool(poolQuantity);
     // --
     Clear();
     player.gameObject.SetActive(false);
+    FillParticles(FireParticles,WaterParticles,WindParticles);
   }
 
   /**
@@ -244,6 +254,31 @@ class Manager extends MonoBehaviour {
     stop = true;
   }
 
+  /**
+	* Obtiene una particula especifica
+	*/
+  public function GetParticle(tipo){
+  	var resultado : GameObject= null;
+  	for(var i=0;i< particles.Count && resultado == null;++i)
+  	{
+  		if(tipo.ToString() == particles[i].tag.ToString())
+  		{
+  			resultado = particles[i];
+  			particles.Remove(resultado);
+  		}
+  	}	
+  	if(resultado == null)
+  	{
+  		Debug.Log(tipo.ToString());
+  	}
+  	return resultado;
+  }	
+
+  public function ReturnParticle(particula: GameObject)
+  {
+  	particles.Add(particula);
+  }
+  
   /**
    * Agrega puntaje a score.
    */
@@ -324,6 +359,33 @@ class Manager extends MonoBehaviour {
   }
   
   /**
+   * Llena el pool de particulas.
+   *
+   */
+  private function FillParticles(fire:int, ice:int, wind:int){
+      var prefabs : GameObject[] = Resources.LoadAll.<GameObject>("Particles");
+      var particle: GameObject;
+  	  for(var i=0;i<fire;++i)
+  	  {
+		particle = Instantiate (prefabs[0], Vector3.zero, Quaternion.identity); 
+		particle.SetActive(false);
+		particles.Add(particle);
+ 	  }
+  	  for(i=0;i<ice;++i)
+  	  {
+  	  	particle = Instantiate (prefabs[1], Vector3.zero, Quaternion.identity);
+  	  	particle.SetActive(false);
+		particles.Add(particle);
+  	  }
+  	  for(i=0;i<wind;++i)
+  	  {
+  	  	particle = Instantiate (prefabs[2], Vector3.zero, Quaternion.identity);
+  	  	particle.SetActive(false);
+		particles.Add(particle);
+  	  }
+  	  
+  }
+  /**
    * Llena la piscina Pool para el arranque del juego.
    *
    * @param int quantity Cantidad de objetos en pool.
@@ -335,10 +397,9 @@ class Manager extends MonoBehaviour {
     builder.Append("Level").Append(level).Append("/Obstacles");
 
     var prefabs : GameObject[] = Resources.LoadAll.<GameObject>(builder.ToString());
-
+	//Debug.Log(prefabs.Length);
     while (obstacles.Count < quantity) {
-
-      obstacle = Instantiate (
+	  obstacle = Instantiate (
           prefabs[Random.Range(0, prefabs.Length)],
           obstacleBegin,
           Quaternion.identity
