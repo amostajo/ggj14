@@ -196,7 +196,16 @@ class Manager extends MonoBehaviour {
     FillPool(poolQuantity);
     // --
     Clear();
-    FillParticles(FireParticles,WaterParticles,WindParticles);
+    //FillParticles(FireParticles,WaterParticles,WindParticles);
+    Stop();
+    GUI.state = GUIManager.State.Menu;
+  }
+
+  /**
+   * Start
+   */
+  public function Start () {
+    sceneAudio.Play("menu");
   }
 
   /**
@@ -253,6 +262,13 @@ class Manager extends MonoBehaviour {
    */
   public function Stop () {
     stop = true;
+  }
+
+  /**
+   * Para el juego.
+   */
+  public function Resume () {
+    stop = false;
   }
 
   /**

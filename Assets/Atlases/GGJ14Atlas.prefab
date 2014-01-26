@@ -42,7 +42,7 @@ MonoBehaviour:
   mSprites:
   - name: button
     x: 0
-    y: 608
+    y: 132
     width: 200
     height: 200
     borderLeft: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: button_bg
-    x: 758
+    x: 860
     y: 924
     width: 100
     height: 100
@@ -66,9 +66,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: graygirl-logo
+    x: 0
+    y: 549
+    width: 859
+    height: 475
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 90
+    paddingRight: 75
+    paddingTop: 53
+    paddingBottom: 48
   - name: pause
-    x: 859
-    y: 928
+    x: 860
+    y: 827
     width: 93
     height: 96
     borderLeft: 0
@@ -80,8 +93,8 @@ MonoBehaviour:
     paddingTop: 2
     paddingBottom: 2
   - name: power_air
-    x: 827
-    y: 827
+    x: 936
+    y: 751
     width: 74
     height: 75
     borderLeft: 0
@@ -93,8 +106,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: power_air-off
-    x: 953
-    y: 949
+    x: 860
+    y: 600
     width: 70
     height: 75
     borderLeft: 0
@@ -106,8 +119,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: power_fire
-    x: 751
-    y: 827
+    x: 860
+    y: 751
     width: 75
     height: 75
     borderLeft: 0
@@ -119,8 +132,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: power_fire-off
-    x: 0
-    y: 535
+    x: 936
+    y: 678
     width: 73
     height: 72
     borderLeft: 0
@@ -132,8 +145,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 3
   - name: power_water
-    x: 902
-    y: 828
+    x: 860
+    y: 676
     width: 75
     height: 74
     borderLeft: 0
@@ -145,8 +158,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 1
   - name: power_water-off
-    x: 74
-    y: 540
+    x: 931
+    y: 608
     width: 75
     height: 67
     borderLeft: 0
@@ -159,7 +172,7 @@ MonoBehaviour:
     paddingBottom: 5
   - name: time_active
     x: 0
-    y: 809
+    y: 333
     width: 750
     height: 93
     borderLeft: 0
@@ -172,7 +185,7 @@ MonoBehaviour:
     paddingBottom: 13
   - name: time_inactive
     x: 0
-    y: 903
+    y: 427
     width: 757
     height: 121
     borderLeft: 0
