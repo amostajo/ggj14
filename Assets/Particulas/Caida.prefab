@@ -12,22 +12,7 @@ GameObject:
   - 12: {fileID: 1200000}
   - 26: {fileID: 2600000}
   m_Layer: 0
-  m_Name: InnerCore
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400002}
-  m_Layer: 0
-  m_Name: Fuego1
+  m_Name: Caida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,22 +24,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
+  m_LocalPosition: {x: .439999998, y: 1.04999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400002}
---- !u!4 &400002
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.48405695, y: .229117393, z: -2.58245516}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400000}
   m_Father: {fileID: 0}
 --- !u!12 &1200000
 ParticleAnimator:
@@ -65,25 +38,25 @@ ParticleAnimator:
   Does Animate Color?: 1
   colorAnimation[0]:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 8487297
   colorAnimation[1]:
     serializedVersion: 2
-    rgba: 3036676095
+    rgba: 1550280551
   colorAnimation[2]:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 2523819630
   colorAnimation[3]:
     serializedVersion: 2
-    rgba: 1526726655
+    rgba: 2220974433
   colorAnimation[4]:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 7368816
   worldRotationAxis: {x: 0, y: 0, z: 0}
   localRotationAxis: {x: 0, y: 0, z: 0}
-  sizeGrow: -.150000006
-  rndForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: .300000012, z: 0}
-  damping: .850000024
+  sizeGrow: .100000001
+  rndForce: {x: .100000001, y: .100000001, z: .100000001}
+  force: {x: 0, y: 0, z: 0}
+  damping: 1
   stopSimulation: 0
   autodestruct: 0
 --- !u!15 &1500000
@@ -95,23 +68,23 @@ EllipsoidParticleEmitter:
   serializedVersion: 2
   m_Enabled: 1
   m_Emit: 1
-  minSize: 1
-  maxSize: 1.5
-  minEnergy: 4
-  maxEnergy: 4.5
-  minEmission: 6
-  maxEmission: 9
+  minSize: .670000017
+  maxSize: 1.55999994
+  minEnergy: 1
+  maxEnergy: 1.20000005
+  minEmission: 1
+  maxEmission: 2
   worldVelocity: {x: 0, y: 0, z: 0}
-  localVelocity: {x: 0, y: 0, z: 0}
-  rndVelocity: {x: 0, y: 0, z: 0}
+  localVelocity: {x: 0, y: 1.5, z: 0}
+  rndVelocity: {x: .00999999978, y: .5, z: .00999999978}
   emitterVelocityScale: .0500000007
   tangentVelocity: {x: 0, y: 0, z: 0}
-  angularVelocity: 65
-  rndAngularVelocity: -15
+  angularVelocity: 40
+  rndAngularVelocity: -10
   rndRotation: 1
   Simulate in Worldspace?: 1
-  m_OneShot: 0
-  m_Ellipsoid: {x: 1, y: 1, z: 1.5}
+  m_OneShot: 1
+  m_Ellipsoid: {x: .75, y: 0, z: .75}
   m_MinEmitterRange: 0
 --- !u!26 &2600000
 ParticleRenderer:
@@ -125,7 +98,7 @@ ParticleRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 642367443312c224bb40c297365867ac, type: 2}
+  - {fileID: 2100000, guid: 96558d9af5ccba84da0a06dc9afa072d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -153,6 +126,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 100002}
+  m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
   m_IsExploded: 1

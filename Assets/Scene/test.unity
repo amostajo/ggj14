@@ -1179,12 +1179,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  boss: {fileID: 0}
   stop: 0
   speed: 1
   doubleJumpInterval: .300000012
   obstacles: []
   show: []
   poolQuantity: 30
+  score: 0
   level: 0
   scheme: 1
   obstacleBegin: {x: 0, y: 0, z: 0}
