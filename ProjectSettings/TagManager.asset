@@ -11,6 +11,8 @@ TagManager:
   - Back
   - PlayerGirl
   - Boss
+  - Continue
+  - Options
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

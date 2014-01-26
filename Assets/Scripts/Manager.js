@@ -53,6 +53,16 @@ class Manager extends MonoBehaviour {
    */
   static var TagBoss = 'Boss';
 
+  /**
+   * Tag para identificar relación de salir.
+   */
+  static var TagContinue = 'Continue';
+
+  /**
+   * Tag para identificar relación de salir.
+   */
+  static var TagOptions = 'Options';
+
   public var particles : List.<GameObject>;
 
   /**
@@ -212,9 +222,7 @@ class Manager extends MonoBehaviour {
    * Salto al jugador.
    */
   public function Update () {
-    if (inputs.back) {
-      HandlePause();
-    }
+    StateCheck();
     if (!stop && !timer.paused) {
       // Poder
       if (inputs.power.active) {
@@ -238,6 +246,20 @@ class Manager extends MonoBehaviour {
         }
         jumpTime += Time.deltaTime;
       }
+    }
+  }
+
+  private function StateCheck () {
+    switch (GUI.state) {
+      case GUIManager.State.Menu:
+        if (inputs.next) {
+          GUI.state = GUIManager.State.Game;
+          Resume();
+          sceneAudio.Play("game");
+        }
+        break;
+      default:
+        break;
     }
   }
 

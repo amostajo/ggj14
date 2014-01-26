@@ -11,6 +11,16 @@ class InputManager extends MonoBehaviour {
   public var back : boolean;
 
   /**
+   * Bandera que indica si la entrada es para restroceder o salir.
+   */
+  public var next : boolean;
+
+  /**
+   * Bandera que indica si la entrada es para restroceder o salir.
+   */
+  public var options : boolean;
+
+  /**
    * Bandera que indica si la entrada es salto.
    */
   public var jump : boolean;
@@ -197,6 +207,24 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
+   * Event de acción de botón de empezar
+   *
+   * @param boolean isDown Evento de si fue presionado o liberado.
+   */
+  public function OnPressContinue (isDown : boolean) {
+    next = isDown;
+  }
+
+  /**
+   * Event de acción de botón de opciones
+   *
+   * @param boolean isDown Evento de si fue presionado o liberado.
+   */
+  public function OnPressOptions (isDown : boolean) {
+    options = isDown;
+  }
+
+  /**
    * Event de acción de botón de saltar
    *
    * @param boolean isDown Evento de si fue presionado o liberado.
@@ -218,6 +246,8 @@ class InputManager extends MonoBehaviour {
     jump = false;
     jumpWait = false;
     joystick = false;
+    next = false;
+    options = false;
     power = new InputPower();
   }
 
