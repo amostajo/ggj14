@@ -44,6 +44,11 @@ class Manager extends MonoBehaviour {
   static var TagQuit = 'Quit';
 
   /**
+   * Tag para identificar relación con player.
+   */
+  static var TagPlayer = 'Player';
+
+  /**
     * Identifica al jugador
     */
   @HideInInspector
@@ -78,7 +83,10 @@ class Manager extends MonoBehaviour {
    * Cantidad de obstaculos a crear en pool.
    */
   public var poolQuantity : int;
-
+  /**
+   * Puntaje
+   */
+  public var score : int;
   /**
    * Nivel.
    */
@@ -149,6 +157,8 @@ class Manager extends MonoBehaviour {
     obstacles = List.<Obstacle>();
     show = List.<Obstacle>();
     FillPool(poolQuantity);
+    // --
+    Clear();
   }
 
   /**
@@ -158,7 +168,7 @@ class Manager extends MonoBehaviour {
     if (inputs.back) {
       HandlePause();
     }
-    if (!timer.paused) {
+    if (!stop && !timer.paused) {
       // Poder
       if (inputs.power.active) {
         if (inputs.power.fire) {
@@ -203,12 +213,26 @@ class Manager extends MonoBehaviour {
   public function Stop () {
     stop = true;
   }
+
+  /**
+   * Agrega puntaje a score.
+   */
+  public function AddScore (toAdd : int) {
+    score += toAdd;
+  }
   
   /**
-   * Finaliza una partida
+   * Finaliza una partida por culpa de un collider
+   */
+  public function GameOver (power : Player.Power) {
+    Stop();
+  }
+
+  /**
+   * Finaliza una partida por XY razón.
    */
   public function GameOver () {
-    // TODO
+    Stop();
   }
 
   /**
@@ -316,6 +340,10 @@ class Manager extends MonoBehaviour {
         scheme = Scheme.Desktop;
         break;
     }
+  }
+
+  private function Clear () {
+    score = 0;
   }
 
 }
