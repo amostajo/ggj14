@@ -45,7 +45,7 @@ class Player extends Actor {
 
 
   public function Update () {
-    if (!manager.timer.paused) {
+    if (!manager.timer.paused && !manager.stop) {
       if(transform.position.x < restoreX && numJump == 0) {
         rigidbody.velocity.x = restoreSpeed;
       } else {

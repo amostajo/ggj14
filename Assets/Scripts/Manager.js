@@ -121,6 +121,18 @@ class Manager extends MonoBehaviour {
   public var inputs : InputManager;
 
   /**
+   * Referencia al manejador de entradas.
+   */
+  @HideInInspector
+  public var GUI : GUIManager;
+
+  /**
+   * Referencia al manejador de entradas.
+   */
+  @HideInInspector
+  public var sceneAudio : AudioManager;
+
+  /**
    * Referencia al timer.
    */
   @HideInInspector
@@ -159,6 +171,8 @@ class Manager extends MonoBehaviour {
   public function Awake () {
     // Propiedades
     inputs = FindObjectOfType(InputManager);
+    GUI = FindObjectOfType(GUIManager);
+    sceneAudio = FindObjectOfType(AudioManager);
     timer = FindObjectOfType(Timer);
     player = FindObjectOfType(Player);
     boss = FindObjectOfType(Boss);
