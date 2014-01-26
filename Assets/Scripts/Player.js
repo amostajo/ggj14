@@ -25,6 +25,11 @@ class Player extends Actor {
   public var numJump : int = 0;
 
   /**
+   * Posicion a restablecer.
+   */
+  private var restoreX : float;
+
+  /**
    * Referencias al manejador.
    */
   private var manager : Manager;
@@ -34,13 +39,14 @@ class Player extends Actor {
    */
   public function Awake () {
     power = Power.None;
+    restoreX = transform.localPosition.x;
     manager = Manager.M();
   }
 
 
   public function Update () {
     if (!manager.timer.paused) {
-      if(transform.position.x <  0 && numJump == 0) {
+      if(transform.position.x < restoreX && numJump == 0) {
         rigidbody.velocity.x = restoreSpeed;
       } else {
         rigidbody.velocity.x = 0f;

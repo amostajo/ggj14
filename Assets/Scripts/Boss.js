@@ -11,7 +11,6 @@ class Boss extends MonoBehaviour {
    * @param Player.Power power Poder de ataque.
    */
   public function Attack (power : Player.Power) {
-
   }
 
 }
