@@ -41,8 +41,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 99502770c50771c49b61b0e5360847bf, type: 2}
   mSprites:
   - name: button
-    x: 0
-    y: 132
+    x: 935
+    y: 608
     width: 200
     height: 200
     borderLeft: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: button_bg
-    x: 860
+    x: 1693
     y: 924
     width: 100
     height: 100
@@ -68,7 +68,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: graygirl-logo
     x: 0
-    y: 549
+    y: 73
     width: 859
     height: 475
     borderLeft: 0
@@ -80,8 +80,8 @@ MonoBehaviour:
     paddingTop: 53
     paddingBottom: 48
   - name: pause
-    x: 860
-    y: 827
+    x: 1794
+    y: 928
     width: 93
     height: 96
     borderLeft: 0
@@ -93,8 +93,8 @@ MonoBehaviour:
     paddingTop: 2
     paddingBottom: 2
   - name: power_air
-    x: 936
-    y: 751
+    x: 860
+    y: 473
     width: 74
     height: 75
     borderLeft: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: power_air-off
     x: 860
-    y: 600
+    y: 324
     width: 70
     height: 75
     borderLeft: 0
@@ -119,8 +119,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: power_fire
-    x: 860
-    y: 751
+    x: 1888
+    y: 949
     width: 75
     height: 75
     borderLeft: 0
@@ -132,8 +132,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: power_fire-off
-    x: 936
-    y: 678
+    x: 860
+    y: 400
     width: 73
     height: 72
     borderLeft: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 3
   - name: power_water
-    x: 860
-    y: 676
+    x: 1964
+    y: 950
     width: 75
     height: 74
     borderLeft: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 1
   - name: power_water-off
-    x: 931
-    y: 608
+    x: 0
+    y: 5
     width: 75
     height: 67
     borderLeft: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
     paddingTop: 3
     paddingBottom: 5
   - name: time_active
-    x: 0
-    y: 333
+    x: 935
+    y: 809
     width: 750
     height: 93
     borderLeft: 0
@@ -184,8 +184,8 @@ MonoBehaviour:
     paddingTop: 15
     paddingBottom: 13
   - name: time_inactive
-    x: 0
-    y: 427
+    x: 935
+    y: 903
     width: 757
     height: 121
     borderLeft: 0
@@ -196,6 +196,19 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: tutorial-screen
+    x: 0
+    y: 549
+    width: 934
+    height: 475
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 90
+    paddingRight: 0
+    paddingTop: 53
+    paddingBottom: 48
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0

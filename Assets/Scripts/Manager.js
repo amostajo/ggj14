@@ -206,7 +206,7 @@ class Manager extends MonoBehaviour {
     FillPool(poolQuantity);
     // --
     Clear();
-    //FillParticles(FireParticles,WaterParticles,WindParticles);
+    FillParticles(FireParticles,WaterParticles,WindParticles);
     Stop();
     GUI.state = GUIManager.State.Menu;
   }
@@ -256,6 +256,28 @@ class Manager extends MonoBehaviour {
           GUI.state = GUIManager.State.Game;
           Resume();
           sceneAudio.Play("game");
+        }
+        if (inputs.options) {
+          GUI.state = GUIManager.State.Controlls;
+        }
+        break;
+      case GUIManager.State.Controlls:
+        if (inputs.back) {
+          GUI.state = GUIManager.State.Menu;
+        }
+        break;
+      case GUIManager.State.Game:
+        if (inputs.back) {
+          GUI.state = GUIManager.State.Pause;
+          HandlePause();
+        }
+        break;
+      case GUIManager.State.Pause:
+        if (inputs.next) {
+          GUI.state = GUIManager.State.Game;
+          HandlePause();
+        } else if (inputs.quit) {
+          Application.Quit();
         }
         break;
       default:
@@ -406,23 +428,24 @@ class Manager extends MonoBehaviour {
       var particle: GameObject;
   	  for(var i=0;i<fire;++i)
   	  {
-		particle = Instantiate (prefabs[0], Vector3.zero, Quaternion.identity); 
-		particle.SetActive(false);
-		particles.Add(particle);
- 	  }
+    		particle = Instantiate (prefabs[0], Vector3.zero, Quaternion.identity); 
+    		particle.SetActive(false);
+    		particles.Add(particle);
+   	  }
   	  for(i=0;i<ice;++i)
   	  {
   	  	particle = Instantiate (prefabs[1], Vector3.zero, Quaternion.identity);
   	  	particle.SetActive(false);
-		particles.Add(particle);
+		    particles.Add(particle);
   	  }
+      /*
   	  for(i=0;i<wind;++i)
   	  {
   	  	particle = Instantiate (prefabs[2], Vector3.zero, Quaternion.identity);
   	  	particle.SetActive(false);
-		particles.Add(particle);
+		    particles.Add(particle);
   	  }
-  	  
+      */  	  
   }
   /**
    * Llena la piscina Pool para el arranque del juego.

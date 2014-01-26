@@ -13,6 +13,11 @@ class InputManager extends MonoBehaviour {
   /**
    * Bandera que indica si la entrada es para restroceder o salir.
    */
+  public var quit : boolean;
+
+  /**
+   * Bandera que indica si la entrada es para restroceder o salir.
+   */
   public var next : boolean;
 
   /**
