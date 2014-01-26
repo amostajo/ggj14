@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 15: {fileID: 1500000}
+  - 15: {fileID: 0}
   - 12: {fileID: 1200000}
   - 26: {fileID: 2600000}
   m_Layer: 0
@@ -59,33 +59,6 @@ ParticleAnimator:
   damping: 1
   stopSimulation: 0
   autodestruct: 0
---- !u!15 &1500000
-EllipsoidParticleEmitter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  serializedVersion: 2
-  m_Enabled: 1
-  m_Emit: 1
-  minSize: 1.38999999
-  maxSize: 1.38999999
-  minEnergy: 2
-  maxEnergy: 2
-  minEmission: 5
-  maxEmission: 10
-  worldVelocity: {x: .330000013, y: 0, z: 0}
-  localVelocity: {x: .140000001, y: 1.45000005, z: 0}
-  rndVelocity: {x: .100000001, y: .5, z: .100000001}
-  emitterVelocityScale: .00999999978
-  tangentVelocity: {x: .100000001, y: 0, z: .100000001}
-  angularVelocity: 20
-  rndAngularVelocity: -10
-  rndRotation: 1
-  Simulate in Worldspace?: 1
-  m_OneShot: 0
-  m_Ellipsoid: {x: .699999988, y: 1.29999995, z: 1}
-  m_MinEmitterRange: 0
 --- !u!26 &2600000
 ParticleRenderer:
   m_ObjectHideFlags: 1
