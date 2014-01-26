@@ -171,6 +171,7 @@ class Manager extends MonoBehaviour {
     FillPool(poolQuantity);
     // --
     Clear();
+    player.gameObject.SetActive(false);
   }
 
   /**
