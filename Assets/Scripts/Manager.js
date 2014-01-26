@@ -249,6 +249,9 @@ class Manager extends MonoBehaviour {
     }
   }
 
+  /**
+   * State check
+   */
   private function StateCheck () {
     switch (GUI.state) {
       case GUIManager.State.Menu:
@@ -351,6 +354,7 @@ class Manager extends MonoBehaviour {
    * Finaliza una partida por culpa de un collider
    */
   public function GameOver (power : Player.Power) {
+    player.Kill();
     Stop();
   }
 
@@ -358,6 +362,7 @@ class Manager extends MonoBehaviour {
    * Finaliza una partida por XY razón.
    */
   public function GameOver () {
+    player.Kill();
     Stop();
   }
 

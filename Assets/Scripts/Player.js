@@ -10,6 +10,11 @@ class Player extends Actor {
   public var power : Power;
 
   /**
+   * Controllador de las animaciones.
+   */
+  public var animator : Animator;
+
+  /**
    * Fuerza del salto.
    */
   public var jumpForce : float = 9f;
@@ -68,12 +73,31 @@ class Player extends Actor {
     power = Power.None;
   }
 
+  /** 
+   * Corre
+   */
+  public function Run () {
+    animator.SetBool("Run", true);
+  }
+
+  /** 
+   * Muere
+   */
+  public function Kill () {
+    animator.SetBool("Die", true);
+  }
+
   /**
    * Saltar
    */
   public function Jump() {
+    animator.SetBool("Jump", true);
+    animator.SetBool("Run", false);
     rigidbody.velocity.y = jumpForce;
     ++numJump;
+    if (numJump > 1) {
+      animator.SetBool("DoubleJump", true);
+    }
   }
   
   /**
@@ -89,6 +113,9 @@ class Player extends Actor {
   public function OnCollisionEnter(collision : Collision) {
     if(collision.gameObject.tag == "Obstacle"){
       numJump = 0;
+      animator.SetBool("Jump", false);
+      animator.SetBool("DoubleJump", false);
+      animator.SetBool("Run", true);
     } 
   }
 }
