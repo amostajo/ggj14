@@ -21,10 +21,22 @@ class InputPower {
   public var water : boolean;
 
   /**
+   * Entrada poder agua.
+   */
+  public var active : boolean;
+
+  /**
    * Constructor.
    */
   public function InputPower () {
     Clear();
+  }
+
+  /**
+   * Checks if any power is active
+   */
+  public function Check () {
+    active = fire || air || water;
   }
 
   /**
@@ -33,7 +45,8 @@ class InputPower {
   public function Clear () {
     fire = false;
     air = false;
-    water = false; 
+    water = false;
+    active = false;
   }
 
 }

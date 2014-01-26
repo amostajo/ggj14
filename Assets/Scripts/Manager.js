@@ -159,6 +159,19 @@ class Manager extends MonoBehaviour {
       HandlePause();
     }
     if (!timer.paused) {
+      // Poder
+      if (inputs.power.active) {
+        if (inputs.power.fire) {
+          player.ActivatePower(Player.Power.Fire);
+        } else if (inputs.power.water) {
+          player.ActivatePower(Player.Power.Water);
+        } else if (inputs.power.air) {
+          player.ActivatePower(Player.Power.Air);
+        }
+      } else {
+        player.DeactivatePowers();
+      }
+      // Salto
       if(inputs.jump) {
         if(player.numJump == 0) {
           player.Jump();
@@ -166,8 +179,8 @@ class Manager extends MonoBehaviour {
         } else if (jumpTime > doubleJumpInterval && player.numJump == 1) {
           player.Jump();
         }
+        jumpTime += Time.deltaTime;
       }
-      jumpTime += Time.deltaTime;
     }
   }
 
