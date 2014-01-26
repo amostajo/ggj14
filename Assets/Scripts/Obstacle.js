@@ -8,19 +8,23 @@ class Obstacle extends MonoBehaviour {
   /**
    * Bounds
    */
+  @HideInInspector
   public var bounds : Bounds;
 
   /**
    * Bandera que indica si es un obstaculo compuesto.
    */
+  @HideInInspector
   public var composed : boolean;
   /**
    * Fix de x en relación al centro del objeto.
    */
+  @HideInInspector
   public var xFix : float;
   /**
    * Tamaño real
    */
+  @HideInInspector
   public var size : float;
 
   /**
