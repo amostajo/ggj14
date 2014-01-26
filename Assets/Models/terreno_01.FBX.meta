@@ -1,13 +1,14 @@
 fileFormatVersion: 2
 guid: 686f9a33ed2a34040ace31c8eb8fc083
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
     4300000: terreno_01
+    4300002: Terreno015
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -60,5 +61,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 
