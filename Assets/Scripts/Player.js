@@ -49,6 +49,20 @@ class Player extends Actor {
   }
 
   /**
+   * Activa un poder en el personaje.
+   */
+  public function ActivatePower (newPower : Power) {
+    power = newPower;
+  }
+
+  /**
+   * Desactiva poderes.
+   */
+  public function DeactivatePowers () {
+    power = Power.None;
+  }
+
+  /**
    * Saltar
    */
   public function Jump() {

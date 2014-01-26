@@ -80,7 +80,7 @@ MonoBehaviour:
     paddingTop: 2
     paddingBottom: 2
   - name: power_air
-    x: 903
+    x: 827
     y: 827
     width: 74
     height: 75
@@ -132,7 +132,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 3
   - name: power_water
-    x: 827
+    x: 902
     y: 828
     width: 75
     height: 74

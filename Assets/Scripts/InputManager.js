@@ -106,6 +106,7 @@ class InputManager extends MonoBehaviour {
     } else if (Input.GetKeyUp(KeyCode.D)) {
       power.air = false;
     }
+    power.Check();
 
     // -- Joystick
     if (joystick) {
@@ -151,6 +152,7 @@ class InputManager extends MonoBehaviour {
       } else if (Input.GetKeyUp(KeyCode.Joystick1Button3)) {
         power.air = false;
       }
+      power.Check();
     }
 
   }
@@ -162,6 +164,7 @@ class InputManager extends MonoBehaviour {
    */
   public function OnPressFire (isDown : boolean) {
     power.fire = isDown;
+    power.Check();
   }
 
   /**
@@ -171,6 +174,7 @@ class InputManager extends MonoBehaviour {
    */
   public function OnPressWater (isDown : boolean) {
     power.water = isDown;
+    power.Check();
   }
 
   /**
@@ -180,6 +184,7 @@ class InputManager extends MonoBehaviour {
    */
   public function OnPressAir (isDown : boolean) {
     power.air = isDown;
+    power.Check();
   }
 
   /**
