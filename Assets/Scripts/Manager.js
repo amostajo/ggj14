@@ -255,6 +255,7 @@ class Manager extends MonoBehaviour {
   private function StateCheck () {
     switch (GUI.state) {
       case GUIManager.State.Menu:
+        player.Idle();
         if (inputs.next) {
           GUI.state = GUIManager.State.Game;
           Resume();
@@ -270,6 +271,7 @@ class Manager extends MonoBehaviour {
         }
         break;
       case GUIManager.State.Game:
+        player.Run();
         if (inputs.back) {
           GUI.state = GUIManager.State.Pause;
           HandlePause();
@@ -279,6 +281,13 @@ class Manager extends MonoBehaviour {
         if (inputs.next) {
           GUI.state = GUIManager.State.Game;
           HandlePause();
+        } else if (inputs.quit) {
+          Application.Quit();
+        }
+        break;
+      case GUIManager.State.GameOver:
+        if (inputs.next) {
+          Application.LoadLevel("transition");
         } else if (inputs.quit) {
           Application.Quit();
         }
@@ -355,6 +364,7 @@ class Manager extends MonoBehaviour {
    */
   public function GameOver (power : Player.Power) {
     player.Kill();
+    GUI.state = GUIManager.State.GameOver;
     Stop();
   }
 
@@ -363,6 +373,7 @@ class Manager extends MonoBehaviour {
    */
   public function GameOver () {
     player.Kill();
+    GUI.state = GUIManager.State.GameOver;
     Stop();
   }
 

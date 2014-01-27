@@ -10,11 +10,6 @@ class Player extends Actor {
   public var power : Power;
 
   /**
-   * Controllador de las animaciones.
-   */
-  public var animator : Animator;
-
-  /**
    * Fuerza del salto.
    */
   public var jumpForce : float = 9f;
@@ -74,10 +69,28 @@ class Player extends Actor {
   }
 
   /** 
+   * Idle
+   */
+  public function Idle () {
+    animator.SetBool("Idle", true);
+    animator.SetBool("Run", false);
+  }
+
+  /** 
+   * Idle
+   */
+  public function Revive () {
+    animator.SetBool("Die", false);
+    animator.SetBool("Revive", true);
+  }
+
+
+  /** 
    * Corre
    */
   public function Run () {
     animator.SetBool("Run", true);
+    animator.SetBool("Revive", false);
   }
 
   /** 

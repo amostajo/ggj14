@@ -5,6 +5,12 @@
  */
 class Actor extends MonoBehaviour {
 
+
+  /**
+   * Controllador de las animaciones.
+   */
+  public var animator : Animator;
+  
   /**
    * Velocidad guardada.
    */

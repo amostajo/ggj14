@@ -44,6 +44,9 @@ class ButtonListener extends MonoBehaviour {
       case Manager.TagOptions:
         manager.inputs.OnPressOptions(isDown);
         break;
+      case Manager.TagQuit:
+        manager.inputs.OnPressQuit(isDown);
+        break;
       default:
         break;
     }

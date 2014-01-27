@@ -387,7 +387,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 50, z: 0}
+  m_Size: {x: 200, y: 150, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &197997671
 GameObject:
@@ -6463,7 +6463,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1380894959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 176151980}
@@ -6527,7 +6527,7 @@ MonoBehaviour:
     e10: 0
     e11: 360
     e12: 0
-    e13: -7200
+    e13: -9200
     e20: 0
     e21: 0
     e22: 360
@@ -8498,7 +8498,7 @@ GameObject:
   - 114: {fileID: 1780166957}
   m_Layer: 8
   m_Name: ButtonQuit
-  m_TagString: Continue
+  m_TagString: Quit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8568,7 +8568,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 50, z: 0}
+  m_Size: {x: 200, y: 150, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1786083924
 GameObject:

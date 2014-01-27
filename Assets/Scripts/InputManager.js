@@ -230,6 +230,15 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
+   * Event de acción de botón de opciones
+   *
+   * @param boolean isDown Evento de si fue presionado o liberado.
+   */
+  public function OnPressQuit (isDown : boolean) {
+    quit = isDown;
+  }
+
+  /**
    * Event de acción de botón de saltar
    *
    * @param boolean isDown Evento de si fue presionado o liberado.
