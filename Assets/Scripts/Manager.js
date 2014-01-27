@@ -206,7 +206,6 @@ class Manager extends MonoBehaviour {
     FillPool(poolQuantity);
     // --
     Clear();
-    FillParticles(FireParticles,WaterParticles,WindParticles);
     Stop();
     GUI.state = GUIManager.State.Menu;
   }
@@ -435,34 +434,6 @@ class Manager extends MonoBehaviour {
     return;
   }
   
-  /**
-   * Llena el pool de particulas.
-   *
-   */
-  private function FillParticles(fire:int, ice:int, wind:int){
-      var prefabs : GameObject[] = Resources.LoadAll.<GameObject>("Particles");
-      var particle: GameObject;
-  	  for(var i=0;i<fire;++i)
-  	  {
-    		particle = Instantiate (prefabs[0], Vector3.zero, Quaternion.identity); 
-    		particle.SetActive(false);
-    		particles.Add(particle);
-   	  }
-  	  for(i=0;i<ice;++i)
-  	  {
-  	  	particle = Instantiate (prefabs[1], Vector3.zero, Quaternion.identity);
-  	  	particle.SetActive(false);
-		    particles.Add(particle);
-  	  }
-      /*
-  	  for(i=0;i<wind;++i)
-  	  {
-  	  	particle = Instantiate (prefabs[2], Vector3.zero, Quaternion.identity);
-  	  	particle.SetActive(false);
-		    particles.Add(particle);
-  	  }
-      */  	  
-  }
   /**
    * Llena la piscina Pool para el arranque del juego.
    *

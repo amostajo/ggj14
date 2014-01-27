@@ -26,6 +26,7 @@ class ObstacleTrigger extends MonoBehaviour {
    */
   public function Awake () {
     manager = Manager.M();
+    /*
     var allChildren = gameObject.GetComponentsInChildren(Transform);
     for (var child : Transform in allChildren) {
     	if(child.name == "Particles")
@@ -33,6 +34,7 @@ class ObstacleTrigger extends MonoBehaviour {
     		particlePosition = child.transform;
     	}
     }
+    */
     
   }
 
