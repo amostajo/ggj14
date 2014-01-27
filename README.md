@@ -17,7 +17,7 @@ Game developed for the GGJ2014.
 
 Copyright & Terms of use
 ========================
-![http://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Cc-by_white.svg/64px-Cc-by_white.svg.png](http://url/to/img.png) Creative Commons Attribution License. 
+![Creative Commons Attribution License.](http://creativecommons.org.nz/wp-content/uploads/2012/05/by.png) Creative Commons Attribution License.
 
 Any work derivated from this repo must give attribution to its contributors. You CAN NOT derivate this work into a commercial product without the consensus and knowledge of all of its contributors.
 
