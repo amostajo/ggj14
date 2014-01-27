@@ -63,10 +63,6 @@ class Manager extends MonoBehaviour {
    */
   static var TagOptions = 'Options';
 
-  /**
-  	* Guarda las particulas que se usaran en la partida
-  	*/
-  @HideInInspector
   public var particles : List.<GameObject>;
 
   /**
@@ -124,11 +120,11 @@ class Manager extends MonoBehaviour {
    */
   public var scheme : Scheme;
 
-  public var FireParticles : int =5;
+  public var FireParticles : int =3;
   
-  public var WaterParticles : int =5;
- 
-  public var AirParticles : int =5;
+  public var WaterParticles : int =2;
+  
+  public var WindParticles : int =2;
 
   /**
    * Punto de arranque para obstaculos.
@@ -208,7 +204,6 @@ class Manager extends MonoBehaviour {
     }
     particles = List.<GameObject>();
     FillPool(poolQuantity);
-    FillParticles(FireParticles,WaterParticles,AirParticles);
     // --
     Clear();
     Stop();
@@ -333,7 +328,6 @@ class Manager extends MonoBehaviour {
 
   /**
 	* Obtiene una particula especifica
-	* @return la particla deseada
 	*/
   public function GetParticle(tipo){
   	var resultado : GameObject= null;
@@ -352,11 +346,6 @@ class Manager extends MonoBehaviour {
   	return resultado;
   }	
 
-
-  /**
-  	*  Regresa una particula al pool departiculas
-  	* @param GameObject particula
-  	*/
   public function ReturnParticle(particula: GameObject)
   {
   	particles.Add(particula);
@@ -443,36 +432,6 @@ class Manager extends MonoBehaviour {
       }
     }
     return;
-  }
-  /**
-   * Llena el pool de particulas de fuego, agua y aire.
-   * @Param int fire
-   * @Param int water
-   * @Param int wind
-   */
-  private function FillParticles(fire:int, water:int, wind:int){
-      var prefabs : GameObject[] = Resources.LoadAll.<GameObject>("Particles");
-      var particle: GameObject;
-  	  for(var i=0;i<fire;++i)
-  	  {
-    		particle = Instantiate (prefabs[0], Vector3.zero, Quaternion.identity); 
-    		particle.SetActive(false);
-    		particles.Add(particle);
-   	  }
-  	  /*for(i=0;i<ice;++i)
-  	  {
-  	  	particle = Instantiate (prefabs[1], Vector3.zero, Quaternion.identity);
-  	  	particle.SetActive(false);
-		    particles.Add(particle);
-  	  }
-      /*
-  	  for(i=0;i<wind;++i)
-  	  {
-  	  	particle = Instantiate (prefabs[2], Vector3.zero, Quaternion.identity);
-  	  	particle.SetActive(false);
-		    particles.Add(particle);
-  	  }
-      */  	  
   }
   
   /**

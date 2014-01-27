@@ -75,12 +75,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dbc8a1f6f2e7a140a6835865c69d35d, type: 3}
+  m_Script: {fileID: 11500000, guid: 443d2fd87ec30644dac413608fbb0dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particlePosition: {fileID: 100000}
   score: 1
-  power: 2
+  power: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
