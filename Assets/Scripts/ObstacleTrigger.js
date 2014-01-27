@@ -26,7 +26,7 @@ class ObstacleTrigger extends MonoBehaviour {
    */
   public function Awake () {
     manager = Manager.M();
-    /*
+    
     var allChildren = gameObject.GetComponentsInChildren(Transform);
     for (var child : Transform in allChildren) {
     	if(child.name == "Particles")
@@ -34,7 +34,7 @@ class ObstacleTrigger extends MonoBehaviour {
     		particlePosition = child.transform;
     	}
     }
-    */
+    
     
   }
 
@@ -54,10 +54,14 @@ class ObstacleTrigger extends MonoBehaviour {
       manager.boss.Attack(power);
       particle = manager.GetParticle(power);
       particle.transform.parent =particlePosition;
+      particle.transform.localPosition = new Vector3(0,0,0);
       particle.gameObject.SetActive(true);
     }
   }
   
+  /**
+    *Devuelve la particula usada al manager
+   */
   public function OnDisable(){
   	if(particle)
   	{
