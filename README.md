@@ -2,7 +2,8 @@ The Gray Girl - Global Game Jam 2014
 ============
 Endless runner game developed for the GGJ2014.
 
-![[Android](http://chooseethanol.com/page/-/choose%20ethanol%20site/images/pages%20images/android-app-on-google-play.jpg)](https://play.google.com/store/apps/details?id=com.amsgames.graygirl)
+![Android](http://chooseethanol.com/page/-/choose%20ethanol%20site/images/pages%20images/android-app-on-google-play.jpg)
+[Go to Google's Play Store](https://play.google.com/store/apps/details?id=com.amsgames.graygirl)
 
 ##UNITY3D Version
 * 4.3.x
