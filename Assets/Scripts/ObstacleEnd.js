@@ -1,11 +1,14 @@
 ﻿#pragma strict
 
 /**
- * Fin de obstaculo.
+ * Obstacle's end point / trigger.
+ * Triggers to deactivae an obstacle.
+ *
+ * @authro Alejandro Mostajo <amostajo@gmail.com>
  */
 class ObstacleEnd extends MonoBehaviour {
   /**
-   * Referencia al manejador.
+   * Manager reference.
    */
   @HideInInspector
   public var manager : Manager;
@@ -18,7 +21,10 @@ class ObstacleEnd extends MonoBehaviour {
   }
 
   /**
-   * Trigger
+   * On Trigger Enter
+   * Checks for obstacles to send them to pool.
+   *
+   * @param Collider collider Collider object.
    */
   public function OnTriggerEnter (collider : Collider) {
     if (collider.transform.tag == Manager.TagObstacle) {

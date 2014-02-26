@@ -1,12 +1,15 @@
 ﻿#pragma strict
 
 /**
- * Aniquilador del juego.
+ * Player's ACTOR killer trigger.
+ * Kills player on collision.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 public class PlayerKiller extends MonoBehaviour {
   
   /**
-   * Relacion al manejador.
+   * Manager reference.
    */
   private var manager : Manager;
 
@@ -18,7 +21,10 @@ public class PlayerKiller extends MonoBehaviour {
   }
 
   /**
-   * Fin del juego.
+   * On trigger enter.
+   * Kill player and game over >:D
+   *
+   * @param Collider collider Collider object
    */
   public function OnTriggerEnter (collider : Collider) {
     if (collider.transform.tag == Manager.TagPlayer) {

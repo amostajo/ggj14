@@ -1,23 +1,22 @@
 ﻿#pragma strict
 
 /**
- * Trigger de obstaculos.
+ * Obstacle trigger.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
+ * @author Adrian Fernandez
  */
 class ObstacleTrigger extends MonoBehaviour {
-
-  private var particle : GameObject;
-  
-  public var particlePosition : Transform;
   /**
    * Score granted by trigger.
    */
   public var score : int = 0;
   /**
-   * Poder al cual reacciona el trigger.
+   * Trigger power
    */
   public var power : Player.Power;
   /**
-   * Referencia al manejador
+   * Manager reference
    */
   private var manager : Manager;
 
@@ -25,23 +24,14 @@ class ObstacleTrigger extends MonoBehaviour {
    * Awake.
    */
   public function Awake () {
-    manager = Manager.M();
-    /*
-    var allChildren = gameObject.GetComponentsInChildren(Transform);
-    for (var child : Transform in allChildren) {
-    	if(child.name == "Particles")
-    	{
-    		particlePosition = child.transform;
-    	}
-    }
-    */
-    
+    manager = Manager.M();    
   }
 
   /**
-   * Trigger.
+   * On trigger enter.
+   * Checks for special colliders that might trigger an special event.
    *
-   * @var Collider collider
+   * @param Collider collider Collider
    */
   public function OnTriggerEnter (collider : Collider) {
     if (collider.transform.tag == manager.TagPlayer
@@ -52,17 +42,6 @@ class ObstacleTrigger extends MonoBehaviour {
       manager.AddScore(score);
     } else if (collider.transform.tag == manager.TagBoss) {
       manager.boss.Attack(power);
-      particle = manager.GetParticle(power);
-      particle.transform.parent =particlePosition;
-      particle.gameObject.SetActive(true);
     }
-  }
-  
-  public function OnDisable(){
-  	if(particle)
-  	{
-  		particle.gameObject.SetActive(false);
-  		manager.ReturnParticle(particle);
-  	}
   }
 }

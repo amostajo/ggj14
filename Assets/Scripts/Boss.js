@@ -1,14 +1,16 @@
 ﻿#pragma strict
 
 /**
- * Jefe, THE GREY GIRL
+ * Game boss, THE GREY GIRL
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
-class Boss extends MonoBehaviour {
+class Boss extends Actor {
 
   /**
-   * Ataca al player con un poder determinado.
+   * Attacks player with a specific power
    *
-   * @param Player.Power power Poder de ataque.
+   * @param Player.Power power Attack power.
    */
   public function Attack (power : Player.Power) {
   }

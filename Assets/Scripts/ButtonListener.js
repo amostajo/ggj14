@@ -1,11 +1,13 @@
 ﻿#pragma strict
 /**
- * Escucha eventos del boton.
+ * Button listener. Calls events on Input Manager.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 class ButtonListener extends MonoBehaviour {
 
   /**
-   * Referencia al manejador.
+   * Manager reference.
    */
   private var manager : Manager;
 
@@ -17,7 +19,7 @@ class ButtonListener extends MonoBehaviour {
   }
 
   /**
-   * Evento de pression de boton.
+   * Checks which button is pressed in order to call event.
    *
    * @param boolean isDown
    */

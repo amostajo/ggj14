@@ -1,6 +1,8 @@
 ﻿#pragma strict
 /**
  * Class component, Scene audio determines the audio to be played in a scene.
+ *
+ * @author Alejandro Mostajo <amostajo@amsgames.com>
  */
 class SceneAudio extends MonoBehaviour {
   /**

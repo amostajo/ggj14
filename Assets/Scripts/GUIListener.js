@@ -1,22 +1,24 @@
 ﻿#pragma strict
 
 /**
- * Escuchador de estados de GUI
+ * GUI state listener. To attach to a GUI game object to behave on certain GUI states.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 class GUIListener extends MonoBehaviour {
 
   /**
-   * Estado al que escucha.
+   * Listening or reaction state.
    */
   public var state : GUIManager.State;
 
   /**
-   * Referencia al manejador
+   * Manager reference
    */
   private var manager : Manager;
 
   /**
-   * Bandera que indica si esta oculto.
+   * Flag that indicates if this is currently hidden.
    */
   private var hidden : boolean = true;
 
@@ -29,7 +31,7 @@ class GUIListener extends MonoBehaviour {
   }
 
   /**
-   * Actualización tardía
+   * Late update
    */
   public function LateUpdate () {
     // Show
@@ -37,7 +39,7 @@ class GUIListener extends MonoBehaviour {
       hidden = false;
       transform.localPosition.y -= 2000;
     }
-
+    // Hide
     if (manager.GUI.state != state && !hidden) {
       hidden = true;
       transform.localPosition.y += 2000;

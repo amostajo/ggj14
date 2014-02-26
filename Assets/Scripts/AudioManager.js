@@ -123,6 +123,9 @@ class AudioManager extends MonoBehaviour {
     }
   }
 
+  /**
+   * Plays the next part of a separated audio.
+   */
   private function PlayNextPart () {
     nameBuilder.Length = 0;
     nameBuilder.Capacity = 16;

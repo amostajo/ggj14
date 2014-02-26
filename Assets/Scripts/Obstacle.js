@@ -1,33 +1,31 @@
 ﻿#pragma strict
 
 /**
- * Obstaculo
+ * Game obtacle script. And obstacles is everything related to the game world. 
+ * The ground, a hill, water, trees, everything that interacts with the player's actor.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
+ * @author Adrian Fernandez
  */
 class Obstacle extends MonoBehaviour {
 
   /**
-   * Indica si el obstacle es cola.
+   * Flag that indicates if the obstacle is tail in the queue.
    */
-  public var isTail : boolean = false;;
+  public var isTail : boolean = false;
 
   /**
-   * Bounds
-   */
-  @HideInInspector
-  public var bounds : Bounds;
-
-  /**
-   * Bandera que indica si es un obstaculo compuesto.
+   * Flag that indicates if the obstacles is composed of multiple game objects.
    */
   @HideInInspector
   public var composed : boolean;
   /**
-   * Fix de x en relación al centro del objeto.
+   * X axis fix towards the center of the game object.
    */
   @HideInInspector
   public var xFix : float;
   /**
-   * Tamaño real
+   * Real size (consider's composed objects)
    */
   @HideInInspector
   public var size : float;
@@ -41,7 +39,7 @@ class Obstacle extends MonoBehaviour {
   }
 
   /**
-   * Limpia el rigidbody
+   * Clears ridgidbocy.
    */
   public function Clear () {
     if (rigidbody) {
@@ -52,7 +50,7 @@ class Obstacle extends MonoBehaviour {
   }
 
   /**
-   * Retorna el punto maximo de X.
+   * Returns the maximum point in the X Axis.
    *
    * @return float max x
    */
@@ -63,9 +61,9 @@ class Obstacle extends MonoBehaviour {
   }
 
   /**
-   * Devuelve el tamaño X.
+   * Returns the size in the X Axis.
    *
-   * @return float tamaño.
+   * @return float size.
    */
   public function GetSizeX () : float {
     return composed 
@@ -74,9 +72,9 @@ class Obstacle extends MonoBehaviour {
   }
 
   /**
-   * Asigna posicion inicial en show.
+   * Assigns initial local position when the object is about to be shown in the scene.
    *
-   * @param floar xRef referencia x.
+   * @param floar xRef x Reference to the tail.
    */
   public function SetShowPosition (xRef : float) {
     transform.localPosition.x = xRef + (composed
@@ -85,7 +83,7 @@ class Obstacle extends MonoBehaviour {
   }
 
   /**
-   * Definir limites del obstaculos.
+   * Defines object bounds, and checks if the object is composed.
    */
   private function GetBounds () {
     if (!renderer) {

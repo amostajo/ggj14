@@ -1,18 +1,28 @@
 ﻿#pragma strict
 
 /**
- * Animacion offset.
+ * Offset animation script.
+ * To be attached to a plane in order to animate it's texture's offset property.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 class OffsetAnimation extends MonoBehaviour {
+  static var mainTexture : String = "_MainTex";
 
   /**
-   * Velocidad de animacion.
+   * Animation speed.
    */
   public var speed : float;
+
   /**
-   * Referencia al manejador.
+   * Manager reference.
    */
   private var manager : Manager;
+
+  /**
+   * Helper, Starting offset
+   */
+  private var offset : float = 0f;
 
   /** 
    * Awake
@@ -20,17 +30,14 @@ class OffsetAnimation extends MonoBehaviour {
   public function Awake () {
     manager = Manager.M();
   }
-  /**
-   * Offset
-   */
-  private var offset : float = 0f;
 
   /**
-   * Anima el offset.
+   * Fixed update
+   * Animate.
    */
   public function FixedUpdate () {
     if (!manager.stop) {
-      renderer.material.SetTextureOffset("_MainTex", Vector2(
+      renderer.material.SetTextureOffset(mainTexture, Vector2(
           Mathf.Repeat(manager.timer.time * speed, 1), 
           0
       ));

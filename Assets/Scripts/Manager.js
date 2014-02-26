@@ -4,180 +4,180 @@ import System.Collections.Generic;
 enum Scheme {Desktop = 1, Mobile = 2};
 
 /**
- * Manejador del juego, contiene todas las reglas de juego.
+ * Game Manager.
+ * Handles game rules and interactions. This is the orchetrator that indicates everything that happends in the game.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
+ * @author Adrian Fernandez
  */
 class Manager extends MonoBehaviour {
 
   /**
-   * Tag para identificar obstaculos.
+   * Obstacles tag identifier.
    */
   static var TagObstacle = 'Obstacle';
 
   /**
-   * Tag para identificar relación a poder de fuego.
+   * Fire tag identifier.
    */
   static var TagFire = 'Fire';
 
   /**
-   * Tag para identificar relación a poder de aire.
+   * Air tag identifier.
    */
   static var TagAir = 'Air';
 
   /**
-   * Tag para identificar relación a poder de aire.
+   * Water tag identifier.
    */
   static var TagWater = 'Water';
 
   /**
-   * Tag para identificar relación de salto.
+   * Jump tag identifier.
    */
   static var TagJump = 'Jump';
 
   /**
-   * Tag para identificar relación de atras.
+   * Back tag identifier.
    */
   static var TagBack = 'Back';
 
   /**
-   * Tag para identificar relación de salir.
+   * Quit tag identifier.
    */
   static var TagQuit = 'Quit';
 
   /**
-   * Tag para identificar relación con player.
+   * Player's actor tag identifier.
    */
   static var TagPlayer = 'PlayerGirl';
 
   /**
-   * Tag para identificar relación con boss.
+   * Boss tag identifier.
    */
   static var TagBoss = 'Boss';
 
   /**
-   * Tag para identificar relación de salir.
+   * Continue tag identifier.
    */
   static var TagContinue = 'Continue';
 
   /**
-   * Tag para identificar relación de salir.
+   * Options tag identifier.
    */
   static var TagOptions = 'Options';
 
-  public var particles : List.<GameObject>;
-
   /**
-    * Identifica al jugador
-    */
+   * Player ACTOR reference. THE GIRL
+   */
   @HideInInspector
   public var player : Player; 
 
   /**
-    * Identifica al boss, grey gril
-    */
+   * Boss ACTOR reference. THE GRAY GIRL
+   */
   @HideInInspector
   public var boss : Boss; 
 
   /**
-    * Detiene el escenario
-    */
+   * Stop flag that when set on true can stop the current moving level. Stops all obstacles.
+   */
   public var stop : boolean;    
 
   /**
-   * Velocidad de los obstaculos.
+   * Obstacles movement speed.
    */
   public var speed : float;
 
   /**
-   * Intervalo de tiempo para segundo salto.
+   * Double jump interval. The duration needed (in seconds) to enable double jump.
    */
   public var doubleJumpInterval : float = 0.3f;
 
   /**
-   * Obstaculos inactivos POOL.
+   * Obstacles POOL.
    */
   public var obstacles : List.<Obstacle>;
   
   /**
-   * Obstaculos activos y en movimiento.
+   * Active obstacles.
    */
   public var show : List.<Obstacle>;
 
   /**
-   * Cantidad de obstaculos a crear en pool.
+   * Property that ONLY afects when the game awakes. Instantiate the number of obstacles set in the variable.
    */
   public var poolQuantity : int;
+
   /**
-   * Puntaje
+   * Score.
    */
   public var score : int;
+
   /**
-   * Nivel.
+   * Current level.
    */
   public var level : int;
 
   /**
-   * Esquema con el cual se van a obtener los inputs.
+   * Current input scheme.
    */
   public var scheme : Scheme;
 
-  public var FireParticles : int =3;
-  
-  public var WaterParticles : int =2;
-  
-  public var WindParticles : int =2;
-
   /**
-   * Punto de arranque para obstaculos.
+   * Obstacles spawn location.
    */
   @HideInInspector
   public var obstacleBegin : Vector3;
 
   /**
-   * Referencia al manejador de entradas.
+   * Input manager reference.
    */
   @HideInInspector
   public var inputs : InputManager;
 
   /**
-   * Referencia al manejador de entradas.
+   * GUI manager referebce.
    */
   @HideInInspector
   public var GUI : GUIManager;
 
   /**
-   * Referencia al manejador de entradas.
+   * Scene's audio manager reference.
    */
   @HideInInspector
   public var sceneAudio : AudioManager;
 
   /**
-   * Referencia al timer.
+   * Timer reference.
    */
   @HideInInspector
   public var timer : Timer;
 
   /**
-   * Auxiliar, indice.
+   * Helper, index for loops.
    */
   private var index : int;
 
   /**
-    * Tiempo para empezar segundo salto
-    */  
+   * Jump time counter. Counts the time lapsed since the jump started, help determine when to enable double jump.
+   */  
   private var jumpTime : float = 0.0f; 
 
   /**
-   * Auxiliar, obstaculo.
+   * Helper, obstacle.
    */
   private var obstacle : Obstacle;
 
   /**
-   * Obstaculo en espera de ser movido.
+   * Helper, On Hold obstacle. Holded until the game determines it can be the tail of the active list of obstacles.
    */
-  private var obstacleWait : Obstacle;
+  private var obstacleOnHold : Obstacle;
 
   /**
-   * Devuelve el manager a quien lo necesite.
+   * Returns MANAGER game object for reference.
+   *
+   * @return Manager
    */
   static function M () : Manager {
     return FindObjectOfType(Manager);
@@ -185,6 +185,7 @@ class Manager extends MonoBehaviour {
 
   /**
    * Unity Awake.
+   * Init properties and checks for references.
    */
   public function Awake () {
     // Propiedades
@@ -202,7 +203,6 @@ class Manager extends MonoBehaviour {
     if (show == null) {
       show = List.<Obstacle>();
     }
-    particles = List.<GameObject>();
     FillPool(poolQuantity);
     // --
     Clear();
@@ -218,12 +218,12 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Salto al jugador.
+   * Game logic and rules checker.
    */
   public function Update () {
     StateCheck();
     if (!stop && !timer.paused) {
-      // Poder
+      // Powers
       if (inputs.power.active) {
         if (inputs.power.fire) {
           player.ActivatePower(Player.Power.Fire);
@@ -235,12 +235,12 @@ class Manager extends MonoBehaviour {
       } else {
         player.DeactivatePowers();
       }
-      // Salto
+      // Jump
       if(inputs.jump) {
-        if(player.numJump == 0) {
+        if(player.jumpCount == 0) {
           player.Jump();
           jumpTime = 0.0f;
-        } else if (jumpTime > doubleJumpInterval && player.numJump == 1) {
+        } else if (jumpTime > doubleJumpInterval && player.jumpCount == 1) {
           player.Jump();
         }
         jumpTime += Time.deltaTime;
@@ -249,7 +249,7 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * State check
+   * Checks the current state of the GUI to determine what to display or which method to call.
    */
   private function StateCheck () {
     switch (GUI.state) {
@@ -297,7 +297,8 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Mueve los obstaculos del mundo.
+   * Fixed updated.
+   * Moves obstacles in the game.
    */
   public function FixedUpdate () {
     if(!stop && !timer.paused) {
@@ -313,53 +314,32 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Para el juego.
+   * Stops the game.
    */
   public function Stop () {
     stop = true;
   }
 
   /**
-   * Para el juego.
+   * Resumes stopped game.
    */
   public function Resume () {
     stop = false;
   }
-
-  /**
-	* Obtiene una particula especifica
-	*/
-  public function GetParticle(tipo){
-  	var resultado : GameObject= null;
-  	for(var i=0;i< particles.Count && resultado == null;++i)
-  	{
-  		if(tipo.ToString() == particles[i].tag.ToString())
-  		{
-  			resultado = particles[i];
-  			particles.Remove(resultado);
-  		}
-  	}	
-  	if(resultado == null)
-  	{
-  		Debug.Log(tipo.ToString());
-  	}
-  	return resultado;
-  }	
-
-  public function ReturnParticle(particula: GameObject)
-  {
-  	particles.Add(particula);
-  }
   
   /**
-   * Agrega puntaje a score.
+   * Adds points to score.
+   *
+   * @param int points Score points to add
    */
-  public function AddScore (toAdd : int) {
-    score += toAdd;
+  public function AddScore (points : int) {
+    score += points;
   }
   
   /**
-   * Finaliza una partida por culpa de un collider
+   * Ends the game, caused by a power.
+   *
+   * @param Player.Power power Cause power
    */
   public function GameOver (power : Player.Power) {
     player.Kill();
@@ -368,7 +348,7 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Finaliza una partida por XY razón.
+   * Game Over, no specific reason.
    */
   public function GameOver () {
     player.Kill();
@@ -377,7 +357,7 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Para o resume el juego.
+   * Handles game pause. Pauses and unpauses game, depending its state.
    */
   public function HandlePause () {
     if (timer.paused) {
@@ -391,7 +371,7 @@ class Manager extends MonoBehaviour {
 
 
   /***
-   * Manda objeto al pool
+   * Sends obstacle object to pool.
    *
    * @param Obstacle swimmer.
    */
@@ -403,25 +383,25 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Crea obstaculos.
+   * Spawns new obstacle.
    */
   private function SpawnObstacle() {
-    while(obstacleWait==null){
-      obstacleWait = GetObstacle();
-      obstacles.Remove(obstacleWait);
+    while(obstacleOnHold==null){
+      obstacleOnHold = GetObstacle();
+      obstacles.Remove(obstacleOnHold);
     }
     if (show.Count > 0 && obstacleBegin.x - show[show.Count - 1].GetMaxX() 
-        >= obstacleWait.GetSizeX()
+        >= obstacleOnHold.GetSizeX()
     ) {
-      obstacleWait.SetShowPosition(show[show.Count - 1].GetMaxX());
-      obstacleWait.gameObject.SetActive(true);
-      show.Add(obstacleWait);
-      obstacleWait = null;
+      obstacleOnHold.SetShowPosition(show[show.Count - 1].GetMaxX());
+      obstacleOnHold.gameObject.SetActive(true);
+      show.Add(obstacleOnHold);
+      obstacleOnHold = null;
     }
   }
 
   /**
-   * Busca un obstaculos inactivo del Pool para activarlo como nuevo.
+   * Returns an available obstacle for usage. Used by manager to spawn an obstacle.
    *
    * @return Obstacle
    */
@@ -435,9 +415,9 @@ class Manager extends MonoBehaviour {
   }
   
   /**
-   * Llena la piscina Pool para el arranque del juego.
+   * Fills pool on scenes awake.
    *
-   * @param int quantity Cantidad de objetos en pool.
+   * @param int quantity Fill quantity.
    */
   private function FillPool (quantity : int) {
 
@@ -460,8 +440,8 @@ class Manager extends MonoBehaviour {
   }
 
   /**
-   * Identifica el esquema basado en el tipo de plataforma en ejecución.
-   * En editor, se utiliza la indicada por el developer.
+   * Checks the current plataform running and sets the scheme.
+   * In the editor, the scheme set in the inspector will have the priority.
    */
   private function SetSchema () {
     switch (Application.platform) {
@@ -478,6 +458,9 @@ class Manager extends MonoBehaviour {
     }
   }
 
+  /**
+   * Clears manager.
+   */
   private function Clear () {
     score = 0;
   }

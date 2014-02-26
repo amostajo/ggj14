@@ -1,27 +1,27 @@
 ﻿#pragma strict
 
 /**
- * Tipo de input
+ * Power inputs
  */
 class InputPower {
 
   /**
-   * Entrada poder de fuego.
+   * Fire power input flag.
    */
   public var fire : boolean;
 
   /**
-   * Entrada poder aire.
+   * Air power input flag.
    */
   public var air : boolean;
 
   /**
-   * Entrada poder agua.
+   * Water power input flag.
    */
   public var water : boolean;
 
   /**
-   * Entrada poder agua.
+   * Flag that indicates when any power is active.
    */
   public var active : boolean;
 
@@ -40,7 +40,7 @@ class InputPower {
   }
 
   /**
-   * Limpia entradas.
+   * Clears flags.
    */
   public function Clear () {
     fire = false;

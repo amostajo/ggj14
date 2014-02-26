@@ -1,17 +1,19 @@
 ﻿#pragma strict
 
 /**
- * Indentifica objetos propios por plataforma.
+ * Destroys the game object if the plataform doesn't matches the selected scheme in the script.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 class PlataformSpecific extends MonoBehaviour {
 
   /**
-   * Schemas specificos para este script.
+   * Scheme specific.
    */
   public var schemes : List.<Scheme>;
 
   /**
-   * Relacion al manejador.
+   * Manager referebce.
    */
   private var manager : Manager;
 
@@ -27,7 +29,7 @@ class PlataformSpecific extends MonoBehaviour {
   }
 
   /**
-   * Elimina el objecto si no se corre en una plataforma específica.
+   * Destroys object on different scheme than selected.
    */
   private function DestroyOnScheme () {
     var save : boolean = false;

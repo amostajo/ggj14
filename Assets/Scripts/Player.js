@@ -1,52 +1,56 @@
 ﻿#pragma strict
 
+/**
+ * The user's actor(also called as the player's character in gaming terms). 
+ * References to the actor controlled by the user.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
+ * @author Adrian Fernandez
+ */
 class Player extends Actor {
 
   enum Power { None = 0, Air = 1, Fire = 2, Water = 3 };
 
   /**
-   * @var Player's power
+   * Player's power
    */
   public var power : Power;
 
   /**
-   * Fuerza del salto.
+   * Jump force.
    */
   public var jumpForce : float = 9f;
 
   /**
-   * Velocidad con la que el player restablece su posicion.
+   * Speed with which the character restores his original position, if an obstacle moves him slightly.
    */
   public var restoreSpeed : float = 2f;
 
   /**
-   * Numero de salto.
+   * Jump counter.
    */
-  public var numJump : int = 0;
+  public var jumpCount : int = 0;
 
   /**
-   * Posicion a restablecer.
+   * Original X position, to be restored if an obstacle moves the actore slightly.
    */
   private var restoreX : float;
-
-  /**
-   * Referencias al manejador.
-   */
-  private var manager : Manager;
 
   /**
    * Awake
    */
   public function Awake () {
+    super.Awake();
     power = Power.None;
     restoreX = transform.localPosition.x;
-    manager = Manager.M();
   }
 
-
+  /**
+   * Update
+   */
   public function Update () {
     if (!manager.timer.paused && !manager.stop) {
-      if(transform.position.x < restoreX && numJump == 0) {
+      if(transform.position.x < restoreX && jumpCount == 0) {
         rigidbody.velocity.x = restoreSpeed;
       } else {
         rigidbody.velocity.x = 0f;
@@ -55,21 +59,23 @@ class Player extends Actor {
   }
 
   /**
-   * Activa un poder en el personaje.
+   * Activates player's power.
+   *
+   * @param Power newPower Power to activate.
    */
   public function ActivatePower (newPower : Power) {
     power = newPower;
   }
 
   /**
-   * Desactiva poderes.
+   * Deactivates current power.
    */
   public function DeactivatePowers () {
     power = Power.None;
   }
 
   /** 
-   * Idle
+   * Idle state. Set related animations
    */
   public function Idle () {
     animator.SetBool("Idle", true);
@@ -77,7 +83,7 @@ class Player extends Actor {
   }
 
   /** 
-   * Idle
+   * Revive state. Set related animations
    */
   public function Revive () {
     animator.SetBool("Die", false);
@@ -86,7 +92,7 @@ class Player extends Actor {
 
 
   /** 
-   * Corre
+   * Running state. Set related animations
    */
   public function Run () {
     animator.SetBool("Run", true);
@@ -94,38 +100,34 @@ class Player extends Actor {
   }
 
   /** 
-   * Muere
+   * Killed state. Set related animations
    */
   public function Kill () {
     animator.SetBool("Die", true);
   }
 
   /**
-   * Saltar
+   * Jump state. Set related animations
+   * Performs jump.
    */
   public function Jump() {
     animator.SetBool("Jump", true);
     animator.SetBool("Run", false);
     rigidbody.velocity.y = jumpForce;
-    ++numJump;
-    if (numJump > 1) {
+    ++jumpCount;
+    if (jumpCount > 1) {
       animator.SetBool("DoubleJump", true);
     }
   }
-  
+    
   /**
-   * Fin de salto
-   */
-  public function FinishJump(){
-    numJump = 0;
-  }
-  
-  /**
-   * Collision
+   * Collision handling
+   *
+   * @param Collision collision Collision
    */
   public function OnCollisionEnter(collision : Collision) {
     if(collision.gameObject.tag == "Obstacle"){
-      numJump = 0;
+      jumpCount = 0;
       animator.SetBool("Jump", false);
       animator.SetBool("DoubleJump", false);
       animator.SetBool("Run", true);

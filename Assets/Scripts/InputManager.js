@@ -1,52 +1,54 @@
 ﻿#pragma strict
 
 /**
- * Manejador de entradas.
+ * Input manager. Handles all inputs in the game.
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 class InputManager extends MonoBehaviour {
 
   /**
-   * Bandera que indica si la entrada es para restroceder o salir.
+   * Flag that indicates a back action. I.e. Back Button.
    */
   public var back : boolean;
 
   /**
-   * Bandera que indica si la entrada es para restroceder o salir.
+   * Flag that indicates a quit action. I.e. Quit Button.
    */
   public var quit : boolean;
 
   /**
-   * Bandera que indica si la entrada es para restroceder o salir.
+   * Flag that indicates a next action. I.e. Next Button or Continue Button.
    */
   public var next : boolean;
 
   /**
-   * Bandera que indica si la entrada es para restroceder o salir.
+   * Flag that indicates options action. I.e. Tutorial Button or other.
    */
   public var options : boolean;
 
   /**
-   * Bandera que indica si la entrada es salto.
+   * Flag that indicates jump action. 
    */
   public var jump : boolean;
 
   /**
-   * Bandera que indica si la entrada es salto.
+   * Flag that indicates if a jump input must wait until to be turned on or not.
    */
   public var jumpWait : boolean;
 
   /**
-   * Bandera que indica si la entrada es salto.
+   * Power input.
    */
   public var power : InputPower;
 
   /**
-   * Bandera que indica si se utilizara un joystick o no.
+   * Flag that indicates if a joystick is on.
    */
   public var joystick : boolean;
 
   /**
-   * Referencia al manejador.
+   * Game manager reference.
    */
   @HideInInspector
   public var manager : Manager;
@@ -68,7 +70,6 @@ class InputManager extends MonoBehaviour {
 
   /**
    * Update
-   * Obtiene entradas.
    */
   public function Update () {
     switch (manager.scheme) {
@@ -81,7 +82,7 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
-   * Procesa todas las entradas para dispositivos desktop o standalone (PCs, Macs, Laptops, Unityweb...)
+   * Process all stand alone inputs (PCs, Macs, Laptops, Unityweb...)
    */
   private function ProcessDesktop () {
     // Entradas por teclado.
@@ -173,9 +174,9 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
-   * Event de acción de botón de poder de fuego.
+   * Event triggered the the fire power button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressFire (isDown : boolean) {
     power.fire = isDown;
@@ -183,9 +184,9 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
-   * Event de acción de botón de poder de agua
+   * Event triggered the water power button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressWater (isDown : boolean) {
     power.water = isDown;
@@ -193,9 +194,9 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
-   * Event de acción de botón de poder de aire
+   * Event triggered the air power button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressAir (isDown : boolean) {
     power.air = isDown;
@@ -203,45 +204,45 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
-   * Event de acción de botón de atrás
+   * Event triggered the back button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressBack (isDown : boolean) {
     back = isDown;
   }
 
   /**
-   * Event de acción de botón de empezar
+   * Event triggered the next button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressContinue (isDown : boolean) {
     next = isDown;
   }
 
   /**
-   * Event de acción de botón de opciones
+   * Event triggered the the options button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressOptions (isDown : boolean) {
     options = isDown;
   }
 
   /**
-   * Event de acción de botón de opciones
+   * Event triggered the quit button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressQuit (isDown : boolean) {
     quit = isDown;
   }
 
   /**
-   * Event de acción de botón de saltar
+   * Event triggered the jump button is pressed.
    *
-   * @param boolean isDown Evento de si fue presionado o liberado.
+   * @param boolean isDown Buttons is pressed or unpressed.
    */
   public function OnPressJump (isDown : boolean) {
     // Jump
@@ -253,7 +254,7 @@ class InputManager extends MonoBehaviour {
   }
 
   /**
-   * Limpia entradas.
+   * Clears all inputs.
    */
   public function Clear () {
     back = false;

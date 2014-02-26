@@ -1,28 +1,43 @@
 ﻿#pragma strict
 
 /**
- * Actor dentro del juego.
+ * Actor inside the game
+ *
+ * @author Alejandro Mostajo <amostajo@gmail.com>
+ * @author Adrian Fernandez
  */
 class Actor extends MonoBehaviour {
 
+  /**
+   * Manager reference.
+   */
+  @HideInInspector
+  public var manager : Manager;
 
   /**
-   * Controllador de las animaciones.
+   * Animator controller.
    */
   public var animator : Animator;
   
   /**
-   * Velocidad guardada.
+   * Saved velocity. For game pause purposes.
    */
   private var savedVelocity : Vector3;
 
   /**
-   * Velocidad  angular guardada.
+   * Saved angular velocity. For game pause purposes.
    */
   private var savedAngularVelocity : Vector3;
 
   /**
-   * Método a llamarse cuando ocurre una pausa.
+   * Awake
+   */
+  public function Awake () {
+    manager = Manager.M();
+  }
+
+  /**
+   * Called when the game is paused.
    */
   public function OnPause () {
     if (rigidbody) {
@@ -33,7 +48,7 @@ class Actor extends MonoBehaviour {
   }
 
   /**
-   * Método a llamarse cuando ocurre se resume una pausa.
+   * Called when the game is resumed from pause.
    */
   public function OnResume () {
     if (rigidbody) {
