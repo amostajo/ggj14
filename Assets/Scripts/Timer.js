@@ -35,7 +35,8 @@ class Timer extends MonoBehaviour {
   /**
    * @var Creation time.
    */
-  private var creationTime : float;
+  @HideInInspector
+  public var creationTime : float;
 
   /**
    * UNITY START.
@@ -43,7 +44,7 @@ class Timer extends MonoBehaviour {
    */
   function Start () {
     paused = false;
-    pausedTime = creationTime = 0.0f;
+    creationTime = pausedTime = 0.0f;
     if (loadedTime == null) {
       loadedTime = 0f;
     }

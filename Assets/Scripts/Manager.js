@@ -112,7 +112,20 @@ class Manager extends MonoBehaviour {
   /**
    * Score.
    */
-  public var score : int;
+  @HideInInspector
+  public var score : int = 0;
+
+  /**
+   * Score bonus.
+   */
+  @HideInInspector
+  public var scoreBonus : int = 0;
+
+  /**
+   * Highest score.
+   */
+  @HideInInspector
+  public var highestScore : int = 0;
 
   /**
    * Current level.
@@ -208,6 +221,7 @@ class Manager extends MonoBehaviour {
     Clear();
     Stop();
     GUI.state = GUIManager.State.Menu;
+    highestScore = PlayerPrefs.GetInt("highestScore");
   }
 
   /**
@@ -218,6 +232,7 @@ class Manager extends MonoBehaviour {
   }
 
   /**
+   * Update
    * Game logic and rules checker.
    */
   public function Update () {
@@ -249,6 +264,17 @@ class Manager extends MonoBehaviour {
   }
 
   /**
+   * Late Update
+   * Updates score for display
+   */
+  public function LateUpdate () {
+    // Update score
+    if (!stop && !timer.paused) {
+      score = scoreBonus + Mathf.FloorToInt(timer.time);
+    }
+  }
+
+  /**
    * Checks the current state of the GUI to determine what to display or which method to call.
    */
   private function StateCheck () {
@@ -258,6 +284,7 @@ class Manager extends MonoBehaviour {
         if (inputs.next) {
           GUI.state = GUIManager.State.Game;
           Resume();
+          Clear();
           sceneAudio.Play("game");
         }
         if (inputs.options) {
@@ -333,7 +360,7 @@ class Manager extends MonoBehaviour {
    * @param int points Score points to add
    */
   public function AddScore (points : int) {
-    score += points;
+    scoreBonus += points;
   }
   
   /**
@@ -342,18 +369,14 @@ class Manager extends MonoBehaviour {
    * @param Player.Power power Cause power
    */
   public function GameOver (power : Player.Power) {
-    player.Kill();
-    GUI.state = GUIManager.State.GameOver;
-    Stop();
+    OnGameOver();
   }
 
   /**
    * Game Over, no specific reason.
    */
   public function GameOver () {
-    player.Kill();
-    GUI.state = GUIManager.State.GameOver;
-    Stop();
+    OnGameOver();
   }
 
   /**
@@ -380,6 +403,19 @@ class Manager extends MonoBehaviour {
     swimmer.transform.localPosition.x = obstacleBegin.x + swimmer.GetSizeX();
     show.Remove(swimmer);
     obstacles.Add(swimmer);
+  }
+
+  /**
+   * Called when game is over.
+   */
+  private function OnGameOver () {
+    player.Kill();
+    Stop();
+    GUI.state = GUIManager.State.GameOver;
+    // Update best score
+    if (score > highestScore) {
+      PlayerPrefs.SetInt("highestScore", score);
+    }
   }
 
   /**
@@ -463,6 +499,8 @@ class Manager extends MonoBehaviour {
    */
   private function Clear () {
     score = 0;
+    scoreBonus = 0;
+    timer.creationTime = timer.time;
   }
 
 }
