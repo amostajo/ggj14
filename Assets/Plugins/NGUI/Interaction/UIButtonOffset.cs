@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2013 Tasharen Entertainment
+// Copyright © 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -40,7 +40,7 @@ public class UIButtonOffset : MonoBehaviour
 
 			if (tc != null)
 			{
-				tc.position = mPos;
+				tc.value = mPos;
 				tc.enabled = false;
 			}
 		}

@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2013 Tasharen Entertainment
+// Copyright © 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -52,7 +52,7 @@ public class UIButtonColor : UIWidgetContainer
 #if UNITY_EDITOR
 			if (!Application.isPlaying) return Color.white;
 #endif
-			Start();
+			Awake();
 			return mColor;
 		}
 		set
@@ -60,12 +60,12 @@ public class UIButtonColor : UIWidgetContainer
 #if UNITY_EDITOR
 			if (!Application.isPlaying) return;
 #endif
-			Start();
+			Awake();
 			mColor = value;
 		}
 	}
 
-	void Start ()
+	void Awake ()
 	{
 		if (!mStarted)
 		{
@@ -80,6 +80,12 @@ public class UIButtonColor : UIWidgetContainer
 		if (!Application.isPlaying) return;
 #endif
 		if (mStarted) OnHover(UICamera.IsHighlighted(gameObject));
+		
+		if (UICamera.currentTouch != null)
+		{
+			if (UICamera.currentTouch.pressed == gameObject) OnPress(true);
+			else if (UICamera.currentTouch.current == gameObject) OnHover(true);
+		}
 	}
 
 	protected virtual void OnDisable ()
@@ -93,7 +99,7 @@ public class UIButtonColor : UIWidgetContainer
 
 			if (tc != null)
 			{
-				tc.color = mColor;
+				tc.value = mColor;
 				tc.enabled = false;
 			}
 		}
@@ -114,7 +120,7 @@ public class UIButtonColor : UIWidgetContainer
 
 			if (ren != null)
 			{
-				mColor = ren.material.color;
+				mColor = Application.isPlaying ? ren.material.color : ren.sharedMaterial.color;
 			}
 			else
 			{
@@ -127,24 +133,30 @@ public class UIButtonColor : UIWidgetContainer
 				else
 				{
 					tweenTarget = null;
-
-					if (Application.isPlaying)
-					{
-						Debug.LogWarning(NGUITools.GetHierarchy(gameObject) + " has nothing for UIButtonColor to color", this);
-						enabled = false;
-					}
+					mStarted = false;
 				}
 			}
 		}
-		OnEnable();
 	}
 
 	protected virtual void OnPress (bool isPressed)
 	{
-		if (enabled)
+		if (enabled && UICamera.currentTouch != null)
 		{
-			if (!mStarted) Start();
-			TweenColor.Begin(tweenTarget, duration, isPressed ? pressed : mColor);
+			if (!mStarted) Awake();
+
+			if (tweenTarget != null)
+			{
+				if (isPressed)
+				{
+					TweenColor.Begin(tweenTarget, duration, pressed);
+				}
+				else if (UICamera.currentTouch.current == gameObject && UICamera.currentScheme == UICamera.ControlScheme.Controller)
+				{
+					TweenColor.Begin(tweenTarget, duration, hover);
+				}
+				else TweenColor.Begin(tweenTarget, duration, mColor);
+			}
 		}
 	}
 
@@ -152,8 +164,8 @@ public class UIButtonColor : UIWidgetContainer
 	{
 		if (enabled)
 		{
-			if (!mStarted) Start();
-			TweenColor.Begin(tweenTarget, duration, isOver ? hover : mColor);
+			if (!mStarted) Awake();
+			if (tweenTarget != null) TweenColor.Begin(tweenTarget, duration, isOver ? hover : mColor);
 		}
 	}
 
@@ -161,8 +173,8 @@ public class UIButtonColor : UIWidgetContainer
 	{
 		if (enabled)
 		{
-			if (!mStarted) Start();
-			TweenColor.Begin(tweenTarget, duration, pressed);
+			if (!mStarted) Awake();
+			if (tweenTarget != null) TweenColor.Begin(tweenTarget, duration, pressed);
 		}
 	}
 
@@ -170,14 +182,16 @@ public class UIButtonColor : UIWidgetContainer
 	{
 		if (enabled)
 		{
-			if (!mStarted) Start();
-			TweenColor.Begin(tweenTarget, duration, mColor);
+			if (!mStarted) Awake();
+			if (tweenTarget != null) TweenColor.Begin(tweenTarget, duration, mColor);
 		}
 	}
 
 	protected virtual void OnSelect (bool isSelected)
 	{
 		if (enabled && (!isSelected || UICamera.currentScheme == UICamera.ControlScheme.Controller))
-			OnHover(isSelected);
+		{
+			if (tweenTarget != null) OnHover(isSelected);
+		}
 	}
 }

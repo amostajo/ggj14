@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2013 Tasharen Entertainment
+// Copyright © 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -80,7 +80,7 @@ public class UIAtlasInspector : Editor
 
 			mAtlas.replacement = obj as UIAtlas;
 			mReplacement = mAtlas.replacement;
-			UnityEditor.EditorUtility.SetDirty(mAtlas);
+			NGUITools.SetDirty(mAtlas);
 			if (mReplacement == null) mType = AtlasType.Normal;
 		}
 	}
@@ -140,7 +140,7 @@ public class UIAtlasInspector : Editor
 			{
 				NGUIEditorTools.RegisterUndo("Atlas Change", mAtlas);
 				mAtlas.replacement = mReplacement;
-				UnityEditor.EditorUtility.SetDirty(mAtlas);
+				NGUITools.SetDirty(mAtlas);
 			}
 			return;
 		}

@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2013 Tasharen Entertainment
+// Copyright © 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -26,6 +26,12 @@ public class UIButton : UIButtonColor
 	public Color disabledColor = Color.grey;
 
 	/// <summary>
+	/// Whether the button will highlight when you drag something over it.
+	/// </summary>
+
+	public bool dragHighlight = false;
+
+	/// <summary>
 	/// Click event listener.
 	/// </summary>
 
@@ -35,7 +41,7 @@ public class UIButton : UIButtonColor
 	/// Whether the button should be enabled.
 	/// </summary>
 
-	public bool isEnabled
+	public virtual bool isEnabled
 	{
 		get
 		{
@@ -86,13 +92,13 @@ public class UIButton : UIButtonColor
 	
 	protected override void OnDragOver ()
 	{
-		if (isEnabled && UICamera.currentTouch.pressed == gameObject)
+		if (isEnabled && (dragHighlight || UICamera.currentTouch.pressed == gameObject))
 			base.OnDragOver();
 	}
 	
 	protected override void OnDragOut ()
 	{
-		if (isEnabled && UICamera.currentTouch.pressed == gameObject)
+		if (isEnabled && (dragHighlight || UICamera.currentTouch.pressed == gameObject))
 			base.OnDragOut();
 	}
 
@@ -106,7 +112,7 @@ public class UIButton : UIButtonColor
 	/// Call the listener function.
 	/// </summary>
 
-	void OnClick ()
+	protected virtual void OnClick ()
 	{
 		if (isEnabled)
 		{
@@ -135,7 +141,7 @@ public class UIButton : UIButtonColor
 
 			if (tc != null && immediate)
 			{
-				tc.color = c;
+				tc.value = c;
 				tc.enabled = false;
 			}
 		}

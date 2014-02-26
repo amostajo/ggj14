@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2013 Tasharen Entertainment
+// Copyright © 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
 #if !UNITY_3_5 && !UNITY_FLASH
@@ -106,7 +106,7 @@ public class UITextList : MonoBehaviour
 	/// Height of each line.
 	/// </summary>
 
-	protected float lineHeight { get { return (textLabel != null) ? textLabel.fontSize : 20f; } }
+	protected float lineHeight { get { return (textLabel != null) ? textLabel.fontSize + textLabel.spacingY : 20f; } }
 
 	/// <summary>
 	/// Height of the scrollable area (outside of the visible area's bounds).
@@ -117,8 +117,8 @@ public class UITextList : MonoBehaviour
 		get
 		{
 			if (!isValid) return 0;
-			int visibleLines = Mathf.FloorToInt((float)textLabel.height / textLabel.fontSize);
-			return Mathf.Max(0, mTotalLines - visibleLines);
+			int maxLines = Mathf.FloorToInt((float)textLabel.height / lineHeight);
+			return Mathf.Max(0, mTotalLines - maxLines);
 		}
 	}
 
@@ -256,43 +256,41 @@ public class UITextList : MonoBehaviour
 			// over and over every paragraph, which is not ideal. It's faster to only do it once
 			// and then do wrapping ourselves in the 'for' loop below.
 			textLabel.UpdateNGUIText();
-			NGUIText.current.lineHeight = 1000000;
-
-			UIFont bitmapFont = textLabel.bitmapFont;
+			NGUIText.rectHeight = 1000000;
 			mTotalLines = 0;
+			bool success = true;
 
 			for (int i = 0; i < mParagraphs.size; ++i)
 			{
 				string final;
 				Paragraph p = mParagraphs.buffer[i];
 
-				if (bitmapFont != null)
-				{
-					if (bitmapFont.WrapText(p.text, out final))
-					{
-						p.lines = final.Split('\n');
-						mTotalLines += p.lines.Length;
-					}
-				}
-#if DYNAMIC_FONT
-				else if (NGUIText.WrapText(textLabel.trueTypeFont, p.text, out final))
+				if (NGUIText.WrapText(p.text, out final))
 				{
 					p.lines = final.Split('\n');
 					mTotalLines += p.lines.Length;
 				}
-#endif
+				else
+				{
+					success = false;
+					break;
+				}
 			}
 
 			// Recalculate the total number of lines
 			mTotalLines = 0;
-			for (int i = 0, imax = mParagraphs.size; i < imax; ++i)
-				mTotalLines += mParagraphs.buffer[i].lines.Length;
+
+			if (success)
+			{
+				for (int i = 0, imax = mParagraphs.size; i < imax; ++i)
+					mTotalLines += mParagraphs.buffer[i].lines.Length;
+			}
 
 			// Update the bar's size
 			if (scrollBar != null)
 			{
 				UIScrollBar sb = scrollBar as UIScrollBar;
-				if (sb != null) sb.barSize = 1f - (float)scrollHeight / mTotalLines;
+				if (sb != null) sb.barSize = (mTotalLines == 0) ? 1f : 1f - (float)scrollHeight / mTotalLines;
 			}
 
 			// Update the visible text
@@ -308,7 +306,13 @@ public class UITextList : MonoBehaviour
 	{
 		if (isValid)
 		{
-			int maxLines = Mathf.FloorToInt((float)textLabel.height / textLabel.fontSize);
+			if (mTotalLines == 0)
+			{
+				textLabel.text = "";
+				return;
+			}
+
+			int maxLines = Mathf.FloorToInt((float)textLabel.height / lineHeight);
 			int sh = Mathf.Max(0, mTotalLines - maxLines);
 			int offset = Mathf.RoundToInt(mScroll * sh);
 			if (offset < 0) offset = 0;
