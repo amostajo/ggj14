@@ -50,6 +50,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Glide
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -377,28 +383,16 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110282140}
-      second:
-      - {fileID: 110104611}
+      first: {fileID: 0}
+      second: []
     data:
-      first: {fileID: 110280631}
-      second:
-      - {fileID: 110100000}
-      - {fileID: 110151785}
-    data:
-      first: {fileID: 110200000}
-      second:
-      - {fileID: 110119674}
-      - {fileID: 110113444}
+      first: {fileID: 0}
+      second: []
     data:
       first: {fileID: 110243746}
       second:
       - {fileID: 110132126}
       - {fileID: 110147796}
-    data:
-      first: {fileID: 110293177}
-      second:
-      - {fileID: 110169288}
     data:
       first: {fileID: 110293879}
       second:
@@ -406,17 +400,23 @@ StateMachine:
       - {fileID: 110194722}
       - {fileID: 110114529}
     data:
-      first: {fileID: 0}
-      second: []
+      first: {fileID: 110293177}
+      second:
+      - {fileID: 110169288}
     data:
-      first: {fileID: 0}
-      second: []
+      first: {fileID: 110200000}
+      second:
+      - {fileID: 110119674}
+      - {fileID: 110113444}
     data:
-      first: {fileID: 0}
-      second: []
+      first: {fileID: 110280631}
+      second:
+      - {fileID: 110100000}
+      - {fileID: 110151785}
     data:
-      first: {fileID: 0}
-      second: []
+      first: {fileID: 110282140}
+      second:
+      - {fileID: 110104611}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 276, y: -156, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

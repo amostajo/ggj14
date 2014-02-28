@@ -92,7 +92,12 @@ class Manager extends MonoBehaviour {
   /**
    * Double jump interval. The duration needed (in seconds) to enable double jump.
    */
-  public var doubleJumpInterval : float = 0.3f;
+  public var doubleJumpInterval : float = 0.22f;
+
+  /**
+   * Glide interval. The duration needed (in seconds) to enable glide after double jump.
+   */
+  public var glideInterval : float = 0.3f;
 
   /**
    * Obstacles POOL.
@@ -125,7 +130,7 @@ class Manager extends MonoBehaviour {
    * Highest score.
    */
   @HideInInspector
-  public var highestScore : int = 0;
+  public var highscore : int = 0;
 
   /**
    * Current level.
@@ -221,7 +226,7 @@ class Manager extends MonoBehaviour {
     Clear();
     Stop();
     GUI.state = GUIManager.State.Menu;
-    highestScore = PlayerPrefs.GetInt("highestScore");
+    highscore = PlayerPrefs.GetInt("highscore");
   }
 
   /**
@@ -252,13 +257,23 @@ class Manager extends MonoBehaviour {
       }
       // Jump
       if(inputs.jump) {
-        if(player.jumpCount == 0) {
+        if (player.jumpCount == 0) {
           player.Jump();
           jumpTime = 0.0f;
-        } else if (jumpTime > doubleJumpInterval && player.jumpCount == 1) {
+        } else if (player.jumpCount == 1 && jumpTime > doubleJumpInterval) {
           player.Jump();
+          jumpTime = 0.0f;
+        } else if (player.jumpCount == 2 && jumpTime > glideInterval) {
+          player.canGlide = true;
+          player.Glide();
+        } else if (player.jumpCount == 2) {
+          player.Glide();
         }
         jumpTime += Time.deltaTime;
+      } else {
+        if (player.isGliding) {
+          player.Fall();
+        }
       }
     }
   }
@@ -413,8 +428,8 @@ class Manager extends MonoBehaviour {
     Stop();
     GUI.state = GUIManager.State.GameOver;
     // Update best score
-    if (score > highestScore) {
-      PlayerPrefs.SetInt("highestScore", score);
+    if (score > highscore) {
+      PlayerPrefs.SetInt("highscore", score);
     }
   }
 

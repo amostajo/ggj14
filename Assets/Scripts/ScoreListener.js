@@ -6,7 +6,7 @@
  * @author Alejandro Mostajo <amostajo@gmail.com>
  */
 class ScoreListener extends MonoBehaviour {
-  enum Type {GameScore = 0, BonusScore = 1, HighestScore = 2};
+  enum Type {GameScore = 0, BonusScore = 1, Highscore = 2};
 
   /**
    * Type of score to listen to.
@@ -64,8 +64,8 @@ class ScoreListener extends MonoBehaviour {
    */
   private function UpdateScore () {
     switch (type) {
-      case Type.HighestScore:
-        score = manager.highestScore;
+      case Type.Highscore:
+        score = manager.highscore;
         break;
       case Type.BonusScore:
         score = manager.scoreBonus;

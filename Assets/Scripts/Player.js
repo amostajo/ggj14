@@ -27,14 +27,32 @@ class Player extends Actor {
   public var restoreSpeed : float = 2f;
 
   /**
+   * Gravity when to apply when gliding.
+   */
+  public var glideForce : float = 18f;
+
+  /**
    * Jump counter.
    */
+  @HideInInspector
   public var jumpCount : int = 0;
+
+  /**
+   * Flag that indicates if the player actor is gliding or not.
+   */
+  @HideInInspector
+  public var isGliding : boolean = false;
+
+  /**
+   * Flag that indicates if the player actor can glide or not.
+   */
+  @HideInInspector
+  public var canGlide : boolean = false;
 
   /**
    * Original X position, to be restored if an obstacle moves the actore slightly.
    */
-  private var restoreX : float;
+  private var originalX : float;
 
   /**
    * Awake
@@ -42,19 +60,24 @@ class Player extends Actor {
   public function Awake () {
     super.Awake();
     power = Power.None;
-    restoreX = transform.localPosition.x;
+    originalX = transform.localPosition.x;
+    isGliding = false;
+    canGlide = false;
   }
 
   /**
-   * Update
+   * Fixed Update
    */
-  public function Update () {
+  public function FixedUpdate () {
     if (!manager.timer.paused && !manager.stop) {
-      if(transform.position.x < restoreX && jumpCount == 0) {
+      if(transform.localPosition.x < originalX && jumpCount == 0) {
         rigidbody.velocity.x = restoreSpeed;
       } else {
         rigidbody.velocity.x = 0f;
       }
+    }
+    if (isGliding) {
+      rigidbody.AddRelativeForce (0, glideForce, 0);
     }
   }
 
@@ -110,13 +133,38 @@ class Player extends Actor {
    * Jump state. Set related animations
    * Performs jump.
    */
-  public function Jump() {
+  public function Jump () {
     animator.SetBool("Jump", true);
     animator.SetBool("Run", false);
     rigidbody.velocity.y = jumpForce;
     ++jumpCount;
     if (jumpCount > 1) {
       animator.SetBool("DoubleJump", true);
+    }
+  }
+
+  /**
+   * Glide state. Sets relatedanimations.
+   * Performs gliding.
+   */
+  public function Glide () {
+    if (canGlide) {
+      if (!isGliding) {
+        animator.SetBool("Glide", true);
+      }
+      isGliding = true;
+    }
+  }
+
+  /**
+   * Turns gliding off and returns to jump state.
+   * Unperforms gliding.
+   */
+  public function Fall () {
+    if (isGliding) {
+      animator.SetBool("Glide", false);
+      animator.SetBool("Jump", true);
+      isGliding = false;
     }
   }
     
@@ -128,9 +176,13 @@ class Player extends Actor {
   public function OnCollisionEnter(collision : Collision) {
     if(collision.gameObject.tag == "Obstacle"){
       jumpCount = 0;
+      animator.SetBool("Run", true);
       animator.SetBool("Jump", false);
       animator.SetBool("DoubleJump", false);
-      animator.SetBool("Run", true);
+      if (isGliding) {
+        Fall();
+      }
+      canGlide = false;
     } 
   }
 }

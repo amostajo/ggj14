@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 778ad9721ad043d4cbd40cffe0dc9570
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: Beta:Head
     100002: Beta:HeadTop_End
@@ -149,6 +149,7 @@ ModelImporter:
     4300002: Beta_HighTorsoGeo
     4300004: Beta_HighJointsGeo
     7400000: DoubleJump
+    7400002: Glide
     9500000: //RootNode
     13700000: Beta_HighJointsGeo
     13700002: Beta_HighLimbsGeo
@@ -180,6 +181,174 @@ ModelImporter:
       loop: 0
       loopTime: 0
       loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Beta:Hips
+        weight: 1
+      - path: Beta:Hips/Beta:LeftUpLeg
+        weight: 1
+      - path: Beta:Hips/Beta:LeftUpLeg/Beta:LeftLeg
+        weight: 1
+      - path: Beta:Hips/Beta:LeftUpLeg/Beta:LeftLeg/Beta:LeftFoot
+        weight: 1
+      - path: Beta:Hips/Beta:LeftUpLeg/Beta:LeftLeg/Beta:LeftFoot/Beta:LeftToeBase
+        weight: 1
+      - path: Beta:Hips/Beta:LeftUpLeg/Beta:LeftLeg/Beta:LeftFoot/Beta:LeftToeBase/Beta:LeftFootToeBase_End
+        weight: 0
+      - path: Beta:Hips/Beta:RightUpLeg
+        weight: 1
+      - path: Beta:Hips/Beta:RightUpLeg/Beta:RightLeg
+        weight: 1
+      - path: Beta:Hips/Beta:RightUpLeg/Beta:RightLeg/Beta:RightFoot
+        weight: 1
+      - path: Beta:Hips/Beta:RightUpLeg/Beta:RightLeg/Beta:RightFoot/Beta:RightToeBase
+        weight: 1
+      - path: Beta:Hips/Beta:RightUpLeg/Beta:RightLeg/Beta:RightFoot/Beta:RightToeBase/Beta:RightFootToeBase_End
+        weight: 0
+      - path: Beta:Hips/Beta:Spine
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandIndex1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandIndex1/Beta:LeftHandIndex2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandIndex1/Beta:LeftHandIndex2/Beta:LeftHandIndex3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandIndex1/Beta:LeftHandIndex2/Beta:LeftHandIndex3/Beta:LeftHandIndex4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandMiddle1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandMiddle1/Beta:LeftHandMiddle2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandMiddle1/Beta:LeftHandMiddle2/Beta:LeftHandMiddle3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandMiddle1/Beta:LeftHandMiddle2/Beta:LeftHandMiddle3/Beta:LeftHandMiddle4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandPinky1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandPinky1/Beta:LeftHandPinky2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandPinky1/Beta:LeftHandPinky2/Beta:LeftHandPinky3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandPinky1/Beta:LeftHandPinky2/Beta:LeftHandPinky3/Beta:LeftHandPinky4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandRing1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandRing1/Beta:LeftHandRing2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandRing1/Beta:LeftHandRing2/Beta:LeftHandRing3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandRing1/Beta:LeftHandRing2/Beta:LeftHandRing3/Beta:LeftHandRing4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandThumb1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandThumb1/Beta:LeftHandThumb2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandThumb1/Beta:LeftHandThumb2/Beta:LeftHandThumb3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:LeftShoulder/Beta:LeftArm/Beta:LeftForeArm/Beta:LeftHand/Beta:LeftHandThumb1/Beta:LeftHandThumb2/Beta:LeftHandThumb3/Beta:LeftHandThumb4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:Neck
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:Neck/Beta:Neck1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:Neck/Beta:Neck1/Beta:Head
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:Neck/Beta:Neck1/Beta:Head/Beta:HeadTop_End
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandIndex1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandIndex1/Beta:RightHandIndex2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandIndex1/Beta:RightHandIndex2/Beta:RightHandIndex3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandIndex1/Beta:RightHandIndex2/Beta:RightHandIndex3/Beta:RightHandIndex4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandMiddle1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandMiddle1/Beta:RightHandMiddle2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandMiddle1/Beta:RightHandMiddle2/Beta:RightHandMiddle3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandMiddle1/Beta:RightHandMiddle2/Beta:RightHandMiddle3/Beta:RightHandMiddle4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandPinky1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandPinky1/Beta:RightHandPinky2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandPinky1/Beta:RightHandPinky2/Beta:RightHandPinky3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandPinky1/Beta:RightHandPinky2/Beta:RightHandPinky3/Beta:RightHandPinky4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandRing1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandRing1/Beta:RightHandRing2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandRing1/Beta:RightHandRing2/Beta:RightHandRing3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandRing1/Beta:RightHandRing2/Beta:RightHandRing3/Beta:RightHandRing4
+        weight: 0
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandThumb1
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandThumb1/Beta:RightHandThumb2
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandThumb1/Beta:RightHandThumb2/Beta:RightHandThumb3
+        weight: 1
+      - path: Beta:Hips/Beta:Spine/Beta:Spine1/Beta:Spine2/Beta:RightShoulder/Beta:RightArm/Beta:RightForeArm/Beta:RightHand/Beta:RightHandThumb1/Beta:RightHandThumb2/Beta:RightHandThumb3/Beta:RightHandThumb4
+        weight: 0
+      - path: BetaHighResMeshes
+        weight: 0
+      - path: BetaHighResMeshes/Beta_HighJointsGeo
+        weight: 0
+      - path: BetaHighResMeshes/Beta_HighLimbsGeo
+        weight: 0
+      - path: BetaHighResMeshes/Beta_HighTorsoGeo
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Glide
+      takeName: mixamo.com
+      firstFrame: 12
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -1135,4 +1304,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
+  additionalBone: 0
   userData: 

@@ -883,7 +883,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 249514685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18811882, y: 1.18652344, z: 0}
+  m_LocalPosition: {x: -1.01123583, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1188733432}
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 'Highest Score:'
+  mText: 'High Score:'
   mFontSize: 75
   mFontStyle: 1
   mAlignment: 0
@@ -1555,7 +1555,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 424608322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 823.366333, y: 360, z: 0}
+  m_LocalPosition: {x: 571.348267, y: 360, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 97714148}
@@ -2191,7 +2191,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2213,7 +2213,10 @@ MonoBehaviour:
   power: 0
   jumpForce: 8
   restoreSpeed: 2
+  glideForce: 18
   jumpCount: 0
+  isGliding: 0
+  canGlide: 0
 --- !u!1 &559507932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,7 +2283,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
-  mText: 'Highest Score:'
+  mText: 'High Score:'
   mFontSize: 75
   mFontStyle: 1
   mAlignment: 0
@@ -4100,6 +4103,7 @@ MonoBehaviour:
   stop: 0
   speed: 8
   doubleJumpInterval: .219999999
+  glideInterval: .300000012
   obstacles: []
   show:
   - {fileID: 1829428711}
@@ -4109,7 +4113,7 @@ MonoBehaviour:
   poolQuantity: 20
   score: 0
   scoreBonus: 0
-  highestScore: 0
+  highscore: 0
   level: 1
   scheme: 1
   obstacleBegin: {x: 0, y: 0, z: 0}
@@ -4697,7 +4701,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1038164134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -823.366333, y: 360, z: 0}
+  m_LocalPosition: {x: -571.348267, y: 360, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 520758768}
