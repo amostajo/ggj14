@@ -11,8 +11,6 @@ public class PlayerKillerPosition extends MonoBehaviour {
    	 * Puts a killer on the left of the screen 
    	 */
 	function Start () {
-		var width:float =Screen.width; 
-		var height:float =Screen.height; 
-		transform.position.x = -1*(width/height*1.6+6.5);
+		transform.position.x = -1.0f*(parseFloat(Screen.width)/parseFloat(Screen.height)*1.6f+6.5f);
 	}
 }
