@@ -50,7 +50,23 @@ class Player extends Actor {
   public var canGlide : boolean = false;
 
   /**
+   * Flag that indicates if the player actor is under some kind of effect.
+   */
+  @HideInInspector
+  public var isUnderEffect : boolean = false;
+
+  /**
+   * Speed.
+   */
+  private var speed : float = 0f;
+
+  /**
    * Original X position, to be restored if an obstacle moves the actore slightly.
+   */
+  private var originalSpeed : float = 0f;
+
+  /**
+   * Original speed, to be restored after down speed effect.
    */
   private var originalX : float;
 
@@ -61,6 +77,7 @@ class Player extends Actor {
     super.Awake();
     power = Power.None;
     originalX = transform.localPosition.x;
+    originalSpeed = speed;
     isGliding = false;
     canGlide = false;
   }
@@ -70,10 +87,10 @@ class Player extends Actor {
    */
   public function FixedUpdate () {
     if (!manager.timer.paused && !manager.stop) {
-      if(transform.localPosition.x < originalX && jumpCount == 0) {
+      if(!isUnderEffect && transform.localPosition.x < originalX && jumpCount == 0) {
         rigidbody.velocity.x = restoreSpeed;
       } else {
-        rigidbody.velocity.x = 0f;
+        rigidbody.velocity.x = speed;
       }
     }
     if (isGliding) {
@@ -166,6 +183,22 @@ class Player extends Actor {
       animator.SetBool("Jump", true);
       isGliding = false;
     }
+  }
+
+  /**
+   * Sets actor to a new speed.
+   */
+  public function SetSpeed (newSpeed : float) {
+    speed = newSpeed;
+    isUnderEffect = true;
+  }
+
+  /**
+   * Restores speed to its original value.
+   */
+  public function RestoreSpeed () {
+    speed = originalSpeed;
+    isUnderEffect = false;
   }
     
   /**

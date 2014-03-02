@@ -2219,6 +2219,7 @@ MonoBehaviour:
   jumpCount: 0
   isGliding: 0
   canGlide: 0
+  isUnderEffect: 0
 --- !u!1 &559507932
 GameObject:
   m_ObjectHideFlags: 0

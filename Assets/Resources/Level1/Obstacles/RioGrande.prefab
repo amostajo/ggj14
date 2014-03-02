@@ -97,6 +97,9 @@ GameObject:
   - 33: {fileID: 3300008}
   - 23: {fileID: 2300008}
   - 65: {fileID: 6500000}
+  - 65: {fileID: 6500006}
+  - 114: {fileID: 11400002}
+  - 54: {fileID: 5400004}
   m_Layer: 0
   m_Name: river_03
   m_TagString: Obstacle
@@ -502,7 +505,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -521,18 +524,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!54 &5400004
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  m_Material: {fileID: 13400000, guid: 69b737326f02b1f4092904d3a326d580, type: 2}
+  m_Material: {fileID: 13400000, guid: d4fab27f7eff3be4fb1d46f5c711320a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.52207661, y: -.449999988, z: 2}
-  m_Center: {x: 1.53304589, y: .180000007, z: -1.26999998}
+  m_Center: {x: 1.53304589, y: .150000006, z: -1.26999998}
 --- !u!65 &6500002
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -557,6 +575,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1.13, z: 2}
   m_Center: {x: .389999986, y: -2.68220901e-07, z: -1.58000004}
+--- !u!65 &6500006
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.52207661, y: 1.08000004, z: 4.75}
+  m_Center: {x: 1.53304589, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -569,12 +599,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTail: 0
-  bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
   composed: 0
   xFix: 0
   size: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3c2f7d0791044419976a124529dbd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: -15
+  power: 0
+  playerSpeed: -8
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
