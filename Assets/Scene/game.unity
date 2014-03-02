@@ -546,6 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e447d597693f6429c87a33c1e36615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ratio: 1.60000002
+  adjustment: 6
 --- !u!65 &103294816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -556,7 +558,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 14, z: 4}
+  m_Size: {x: 1, y: 14, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &103294817
 MonoBehaviour:
