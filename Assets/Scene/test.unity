@@ -4118,7 +4118,7 @@ MonoBehaviour:
   scoreBonus: 0
   highscore: 0
   level: 0
-  scheme: 1
+  scheme: 2
   obstacleBegin: {x: 0, y: 0, z: 0}
   inputs: {fileID: 0}
   GUI: {fileID: 0}
