@@ -184,6 +184,11 @@ class Manager extends MonoBehaviour {
   public var timer : Timer;
 
   /**
+   * Audio clip to be played when is game over.
+   */
+  public var loseClip : AudioClip;
+
+  /**
    * Helper, index for loops.
    */
   private var index : int;
@@ -422,7 +427,6 @@ class Manager extends MonoBehaviour {
     }
   }
 
-
   /***
    * Sends obstacle object to pool.
    *
@@ -436,6 +440,18 @@ class Manager extends MonoBehaviour {
   }
 
   /**
+   * Plays an audio clip.
+   *
+   * @param AudioClip clip Audio clip to play.
+   */
+  public function PlayClip (clip : AudioClip) {
+    if (audio && clip) {
+      audio.clip = clip;
+      audio.Play();
+    }
+  }
+
+  /**
    * Called when game is over.
    */
   private function OnGameOver () {
@@ -445,6 +461,10 @@ class Manager extends MonoBehaviour {
     // Update best score
     if (score > highscore) {
       PlayerPrefs.SetInt("highscore", score);
+    }
+    if (audio && loseClip) {
+      audio.clip = loseClip;
+      audio.Play();
     }
   }
 
@@ -492,7 +512,6 @@ class Manager extends MonoBehaviour {
     builder.Append("Level").Append(level).Append("/Obstacles");
 
     var prefabs : GameObject[] = Resources.LoadAll.<GameObject>(builder.ToString());
-	//Debug.Log(prefabs.Length);
     while (obstacles.Count < quantity) {
 	  obstacle = Instantiate (
           prefabs[Random.Range(0, prefabs.Length)],

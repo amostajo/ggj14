@@ -26,6 +26,11 @@ class ObstacleTrigger extends MonoBehaviour {
   public var playerSpeed : float = 0f;
 
   /**
+   * Audio clip to be played when trigger.
+   */
+  public var clip : AudioClip;
+
+  /**
    * Manager reference
    */
   private var manager : Manager;
@@ -60,6 +65,9 @@ class ObstacleTrigger extends MonoBehaviour {
       if (playerSpeed != 0f) {
         effect = Effect.SpeedChange;
         manager.player.SetSpeed(playerSpeed);
+      }
+      if (clip) {
+        manager.PlayClip(clip);
       }
     } else if (collider.transform.tag == manager.TagBoss) {
       manager.boss.Attack(power);

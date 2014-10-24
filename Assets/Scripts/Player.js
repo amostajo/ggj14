@@ -56,6 +56,16 @@ class Player extends Actor {
   public var isUnderEffect : boolean = false;
 
   /**
+   * Audio clip to be played when the player jumps.
+   */
+  public var jumpClip : AudioClip;
+
+  /**
+   * Audio clip to be played when the player runs.
+   */
+  public var runningClip : AudioClip;
+
+  /**
    * Speed.
    */
   private var speed : float = 0f;
@@ -157,6 +167,11 @@ class Player extends Actor {
     ++jumpCount;
     if (jumpCount > 1) {
       animator.SetBool("DoubleJump", true);
+    }
+    if (audio && jumpClip) {
+      audio.clip = jumpClip;
+      audio.loop = false;
+      audio.Play();
     }
   }
 
