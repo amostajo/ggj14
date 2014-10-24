@@ -104,8 +104,8 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: D:/Dropbox/Ams Games/Android Deployment/amsgames2013.keystore
-  AndroidKeyaliasName: amsgames
+  AndroidKeystoreName: 
+  AndroidKeyaliasName: 
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 

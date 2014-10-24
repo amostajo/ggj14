@@ -137,6 +137,17 @@ class Manager extends MonoBehaviour {
    */
   public var level : int;
 
+   /*
+    * Acceleration level
+    */
+  public var acceleration : float = 40.0;
+
+  /*
+   * Max speed level
+   */
+  public var maxSpeed : float = 21;
+ 
+
   /**
    * Current input scheme.
    */
@@ -192,6 +203,7 @@ class Manager extends MonoBehaviour {
    */
   private var obstacleOnHold : Obstacle;
 
+  
   /**
    * Returns MANAGER game object for reference.
    *
@@ -243,7 +255,10 @@ class Manager extends MonoBehaviour {
   public function Update () {
     StateCheck();
     if (!stop && !timer.paused) {
-      // Powers
+        // Powers
+        if(speed<maxSpeed){
+            speed += Time.deltaTime/acceleration;
+        }
       if (inputs.power.active) {
         if (inputs.power.fire) {
           player.ActivatePower(Player.Power.Fire);

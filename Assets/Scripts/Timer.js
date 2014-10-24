@@ -88,6 +88,7 @@ class Timer extends MonoBehaviour {
    * @return float Game time
    */
   function GetGameTime () : float {
-    return 0.0f;
+      return time;
   }
+
 }
