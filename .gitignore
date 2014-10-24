@@ -11,6 +11,7 @@
 # Device DB files
 *.sqdb
 *.999q
+Thumbs.db
 
 # UNITY files
 [Ll]ibrary/
