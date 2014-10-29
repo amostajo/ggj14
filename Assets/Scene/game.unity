@@ -3369,7 +3369,7 @@ Transform:
   - {fileID: 104058392}
   - {fileID: 1839552800}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!114 &682884739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,10 +4520,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 682884738}
   - {fileID: 1104233149}
   - {fileID: 1376960936}
   - {fileID: 1829428710}
+  - {fileID: 682884738}
   m_Father: {fileID: 442099263}
   m_RootOrder: 0
 --- !u!114 &904697260
@@ -5784,7 +5784,7 @@ Transform:
   - {fileID: 1739715225}
   - {fileID: 1400729746}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!54 &1104233150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7470,7 +7470,7 @@ Transform:
   - {fileID: 1090851321}
   - {fileID: 1149785584}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1376960937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9721,7 +9721,7 @@ Transform:
   - {fileID: 1305465376}
   - {fileID: 1832946391}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &1829428711
 MonoBehaviour:
   m_ObjectHideFlags: 0
