@@ -1827,7 +1827,6 @@ Transform:
   - {fileID: 961415562}
   - {fileID: 972697617}
   - {fileID: 103294814}
-  - {fileID: 485499408}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &458689154
@@ -1964,33 +1963,6 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
---- !u!1 &485499407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 485499408}
-  m_Layer: 0
-  m_Name: PrefabCreation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &485499408
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 485499407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 442099263}
-  m_RootOrder: 6
 --- !u!1 &520758767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3341,7 @@ Transform:
   - {fileID: 104058392}
   - {fileID: 1839552800}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!114 &682884739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,10 +4492,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 682884738}
   - {fileID: 1104233149}
   - {fileID: 1376960936}
   - {fileID: 1829428710}
-  - {fileID: 682884738}
   m_Father: {fileID: 442099263}
   m_RootOrder: 0
 --- !u!114 &904697260
@@ -5784,7 +5756,7 @@ Transform:
   - {fileID: 1739715225}
   - {fileID: 1400729746}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!54 &1104233150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7470,7 +7442,7 @@ Transform:
   - {fileID: 1090851321}
   - {fileID: 1149785584}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1376960937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9721,7 +9693,7 @@ Transform:
   - {fileID: 1305465376}
   - {fileID: 1832946391}
   m_Father: {fileID: 904697259}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1829428711
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -325,6 +325,9 @@ class Manager extends MonoBehaviour {
         if (inputs.options) {
           GUI.state = GUIManager.State.Controlls;
         }
+        if (inputs.quit) {
+          Application.Quit();
+        }
         break;
       case GUIManager.State.Controlls:
         if (inputs.back) {
