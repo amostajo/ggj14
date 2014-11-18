@@ -46,7 +46,11 @@ class InputManager extends MonoBehaviour {
    * Flag that indicates if a joystick is on.
    */
   public var joystick : boolean;
-
+  /**
+   * Flag that indicates if a joystick is on.
+   */
+  public var axis : boolean;
+	
   /**
    * Game manager reference.
    */
@@ -66,6 +70,7 @@ class InputManager extends MonoBehaviour {
         break;
       }
     }
+    axis = false;
   }
 
   /**
@@ -86,7 +91,6 @@ class InputManager extends MonoBehaviour {
    */
   private function ProcessDesktop () {
     // Entradas por teclado.
-
     // Back
     if (Input.GetKeyDown(KeyCode.Escape)) {
       back = true;
@@ -95,9 +99,9 @@ class InputManager extends MonoBehaviour {
     }
 
     // Jump
-    if (!jumpWait && Input.GetKeyDown(KeyCode.Space)) {
+    if (!jumpWait && Input.GetKeyDown(KeyCode.Space) ) {
       jump = true;
-    } else if (jumpWait || Input.GetKeyUp(KeyCode.Space)) {
+    } else if (jumpWait || Input.GetKeyUp(KeyCode.Space) ) {
       jump = false;
     }
 
@@ -124,7 +128,7 @@ class InputManager extends MonoBehaviour {
     }
     power.Check();
 
-    // -- Joystick
+	// -- Joystick
     if (joystick) {
 
       // Back
@@ -135,37 +139,35 @@ class InputManager extends MonoBehaviour {
       }
 
       // Jump
-      if (!jumpWait 
-          && (Input.GetKeyDown(KeyCode.Joystick1Button4)
-              || Input.GetKeyDown(KeyCode.Joystick1Button0))
-      ) {
+      if (!jumpWait && Input.GetAxis("Vertical")>0.0)
+      {
         jump = true;
-      } else if (jumpWait 
-          || (Input.GetKeyUp(KeyCode.Joystick1Button4)
-              || Input.GetKeyUp(KeyCode.Joystick1Button0))
-      ) {
+        axis = true;
+      } else if (jumpWait || (Input.GetAxis("Vertical")==0.0 && axis))
+       {
         jump = false;
+        axis = false;
       }
 
       // Powers
       // -- Fire
-      if (Input.GetKeyDown(KeyCode.Joystick1Button1)) {
+      if (Input.GetKeyDown("joystick button 0")) {
         power.fire = true;
-      } else if (Input.GetKeyUp(KeyCode.Joystick1Button1)) {
+      } else if (Input.GetKeyUp("joystick button 0")) {
         power.fire = false;
       }
 
       // -- Water
-      if (Input.GetKeyDown(KeyCode.Joystick1Button2)) {
+      if (Input.GetKeyDown("joystick button 1")) {
         power.water = true;
-      } else if (Input.GetKeyUp(KeyCode.Joystick1Button2)) {
+      } else if (Input.GetKeyUp("joystick button 1")) {
         power.water = false;
       }
 
       // -- Air
-      if (Input.GetKeyDown(KeyCode.Joystick1Button3)) {
+      if ( Input.GetKeyDown("joystick button 2")) {
         power.air = true;
-      } else if (Input.GetKeyUp(KeyCode.Joystick1Button3)) {
+      } else if (Input.GetKeyUp("joystick button 2")) {
         power.air = false;
       }
       power.Check();
