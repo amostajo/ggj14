@@ -128,23 +128,28 @@ class InputManager extends MonoBehaviour {
     }
     power.Check();
 
-	// -- Joystick
+	  // -- Joystick
     if (joystick) {
 
       // Back
-      if (Input.GetKeyDown(KeyCode.Joystick1Button5)) {
+      if (Input.GetKeyDown("joystick button 10")) {
         back = true;
-      } else if (back && Input.GetKeyUp(KeyCode.Joystick1Button5)) {
+      } else if (back && Input.GetKeyUp("joystick button 10")) {
         back = false;
       }
 
+      // Start
+      if (Input.GetKeyDown("joystick button 9")) {
+        next = true;
+      } else if (next && Input.GetKeyUp("joystick button 9")) {
+        next = false;
+      }
+
       // Jump
-      if (!jumpWait && Input.GetKeyDown("joystick button 2"))
-      {
+      if (!jumpWait && Input.GetKeyDown("joystick button 2")) {
         jump = true;
         axis = true;
-      } else if (jumpWait || (Input.GetKeyUp("joystick button 2") && axis))
-       {
+      } else if (jumpWait || (Input.GetKeyUp("joystick button 2") && axis)) {
         jump = false;
         axis = false;
       }
