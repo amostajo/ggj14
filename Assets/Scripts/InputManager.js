@@ -139,11 +139,11 @@ class InputManager extends MonoBehaviour {
       }
 
       // Jump
-      if (!jumpWait && Input.GetAxis("Vertical")>0.0)
+      if (!jumpWait && Input.GetKeyDown("joystick button 2"))
       {
         jump = true;
         axis = true;
-      } else if (jumpWait || (Input.GetAxis("Vertical")==0.0 && axis))
+      } else if (jumpWait || (Input.GetKeyUp("joystick button 2") && axis))
        {
         jump = false;
         axis = false;
@@ -165,9 +165,9 @@ class InputManager extends MonoBehaviour {
       }
 
       // -- Air
-      if ( Input.GetKeyDown("joystick button 2")) {
+      if ( Input.GetKeyDown("joystick button 3")) {
         power.air = true;
-      } else if (Input.GetKeyUp("joystick button 2")) {
+      } else if (Input.GetKeyUp("joystick button 3")) {
         power.air = false;
       }
       power.Check();
