@@ -22,7 +22,7 @@ class TimeBehavior extends MonoBehaviour {
         light.color = new Color(0.236f,0.153f,0.49f);
     }
     if(time.Hour<6 && time.Hour>0) {
-        light.color = new Color(0.236f,0.153f,0.49f);
+        light.color = new Color(0.553f,0.815f,1.00f);
     }
 
   }
